@@ -59,57 +59,74 @@
         <label for="pm_open">診療時間（午後）</label>
         <input id="pm_open" type="text" name="pm_open" placeholder="例: 13:00〜17:00">
 
-        <label for="treatement-input-filed">治療法</label>
+        <label for="treatment-input-field">治療法</label>
         <div id="treatment-display-area" class="tag-area"></div>
-        <input id="treatement-input-filed" class="tag-input" type="text" placeholder="治療法を入力してEnter" />
+        <input id="treatement-input-field" class="tag-input" type="text" placeholder="治療法を入力してEnter" />
         <input type="hidden" name="treatment" id="treatment-hidden-input">
         <div id="treatment-suggestions-data" style="display: none;">@json($treatments)</div>
 
-        <label for="specialties-input-filed">専門外来</label>
+        <label for="specialties-input-field">専門外来</label>
         <div id="specialties-display-area" class="tag-area"></div>
-        <input id="specialties-input-filed" class="tag-input" type="text" placeholder="専門外来を入力してEnter" />
+        <input id="specialties-input-field" class="tag-input" type="text" placeholder="専門外来を入力してEnter" />
         <input type="hidden" name="specialties" id="specialties-hidden-input">
         <div id="specialties-suggestions-data" style="display: none;">@json($specialties)</div>
 
-        <label for="disorders-input-filed">対象疾患</label>
+        <label for="disorders-input-field">対象疾患</label>
         <div id="disorders-display-area" class="tag-area"></div>
-        <input id="disordes-input-filed" class="tag-input" type="text" placeholder="対象疾患を入力してEnter" />
+        <input id="disorders-input-field" class="tag-input" type="text" placeholder="対象疾患を入力してEnter" />
         <input type="hidden" name="disorders" id="disorders-hidden-input">
         <div id="disorders-suggestions-data" style="display: none;">@json($disorders)</div>
 
-        <label for="features-input-filed">特徴タグ</label>
+        <label for="features-input-field">特徴タグ</label>
         <div id="features-display-area" class="tag-area"></div>
-        <input id="features-input-filed" class="tag-input" type="text" placeholder="特徴タグを入力してEnter" />
+        <input id="features-input-field" class="tag-input" type="text" placeholder="特徴タグを入力してEnter" />
         <input type="hidden" name="features" id="features-hidden-input">
         <div id="features-suggestions-data" style="display: none;">@json($features)</div>
 
         <script>
             
+            // まずはページ全体が読み込まれてから実行されるようにする。
+            document.addEventListener('DOMContentLoaded',function(){
+                console.log('読み込みOK');
+
+                //　次にtreatment-suggestions-dataを取得してみる
+                const treatmentData = document.getElementById('treatment-suggestions-data');
+                const treatmentDisplay = document.getElementById('treatement-input-field');
+                console.log(treatmentData,treatmentDisplay);
+
+                //　クリックされたら、イベントが発動するようにする？
+                treatmentDisplay.addEventListener('click',oneClick);
+
+                //　動作の内容
+                function oneClick() {
+                    alert(treatmentData);
+                }
+                
+            });
+
+        </script>
+
+            {{--
             //　ページ全体が読み込まれて時に実行されるようにする。
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('ページが読み込まれました！');
                 //　書くタグフォームの初期化を行う共通関数
                 function initTagEditor(fieldIdPrefix,initialSuggestions,initialSelectedTags = []) {
                     
+                    console.log(`${fieldIdPrefix}`);
                     // 書くHTML要素を取得
                     const displayArea = document.getElementById(`${fieldIdPrefix}-display-area`);
                     const inputField = document.getElementById(`${fieldIdPrefix}-input-field`);
                     const hiddenInput = document.getElementById(`${fieldIdPrefix}-hidden-input`);
 
-                    //　現在選択されているタグを保持する配列
-                    let selectedTags = [...initialSelectedTags];                    
-                    
-                    //　タグ候補のデータを加工する
-                    const allSuggestions = initialSuggestions.map(s => typeof s === 'string' ? s : s.name);
-
-                    // コンソールでデータの初期状態を確認する
-                    console.log(`---${fieldIdPrefix}の候補データ ---`);
-                    console.log(allSuggestions);
-                    console.log(`----------------------`);
-                    
+                   
                 }
                
+                initTagEditor();
             });
+            */
+
+
 
 
 
@@ -118,7 +135,7 @@
             //　ページ全体が読み込まれた時に実行されるようにする
             document.addEventListener('DOMContentLoaded',function(){
                 // 各HTML要素をJavaScriptで捕まえる、取得する
-                const treatementInputField = document.getElementById('specialties-input-filed'); //タグ入力欄
+                const treatementInputField = document.getElementById('specialties-input-field'); //タグ入力欄
                 const treatmentDisplayArea = document.getElementById('specialties-display-area'); //選択された表示エリア
                 const treatmentHiddenInput = document.getElementById('specialties-hidden-input'); //フォーム送信用のかくしフィールド
                 const treatmentSuggestionsDiv = document.getElementById('specialties-suggestions-data'); //タグ候補が入った隠しDiv
@@ -144,9 +161,9 @@
                
 
             }); 
-            */
+            --}}
             
-        </script>
+        
     
 
 
