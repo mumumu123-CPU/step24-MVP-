@@ -10,6 +10,7 @@
         h2 { background-color: #ddd; padding: 10px; text-align: center; }
         label { display: block; margin-top: 15px; }
         input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+        .tag {cursor: pointer;}
         .tag-area { border: 1px solid #ccc; padding: 8px; min-height: 40px; background: #f9f9f9; cursor: text; }
         .tag { display: inline-block; background: #5cb85c; color: white; padding: 5px 10px; margin: 2px; border-radius: 4px; }
         .tag button { background: none; border: none; color: white; margin-left: 5px; cursor: pointer; }
@@ -61,50 +62,220 @@
 
         <label for="treatment-input-field">治療法</label>
         <div id="treatment-display-area" class="tag-area"></div>
-        <input id="treatement-input-field" class="tag-input" type="text" placeholder="治療法を入力してEnter" />
+        <input id="treatment-input-field" class="tag-input" type="text" placeholder="タグをクリックしてください" />
         <input type="hidden" name="treatment" id="treatment-hidden-input">
-        <div id="treatment-suggestions-data" style="display: none;">@json($treatments)</div>
+        <div id="treatment-suggestions-data" style="display: none;">@json($treatments)</div> {{--画面には出してないけど、jsonデータが入ってる。--}}
 
         <label for="specialties-input-field">専門外来</label>
         <div id="specialties-display-area" class="tag-area"></div>
-        <input id="specialties-input-field" class="tag-input" type="text" placeholder="専門外来を入力してEnter" />
+        <input id="specialties-input-field" class="tag-input" type="text" placeholder="タグをクリックしてください" />
         <input type="hidden" name="specialties" id="specialties-hidden-input">
         <div id="specialties-suggestions-data" style="display: none;">@json($specialties)</div>
 
         <label for="disorders-input-field">対象疾患</label>
         <div id="disorders-display-area" class="tag-area"></div>
-        <input id="disorders-input-field" class="tag-input" type="text" placeholder="対象疾患を入力してEnter" />
+        <input id="disorders-input-field" class="tag-input" type="text" placeholder="タグをクリックしてください" />
         <input type="hidden" name="disorders" id="disorders-hidden-input">
         <div id="disorders-suggestions-data" style="display: none;">@json($disorders)</div>
 
         <label for="features-input-field">特徴タグ</label>
         <div id="features-display-area" class="tag-area"></div>
-        <input id="features-input-field" class="tag-input" type="text" placeholder="特徴タグを入力してEnter" />
+        <input id="features-input-field" class="tag-input" type="text" placeholder="タグをクリックしてください" />
         <input type="hidden" name="features" id="features-hidden-input">
         <div id="features-suggestions-data" style="display: none;">@json($features)</div>
 
         <script>
-            
+        
             // まずはページ全体が読み込まれてから実行されるようにする。
             document.addEventListener('DOMContentLoaded',function(){
-                console.log('読み込みOK');
+            // jsonからデータを取得する。　JSON .parseやtextContentが少々不明
+                const treatmentSuggestions = JSON.parse(document.getElementById('treatment-suggestions-data').textContent);
+                const specialtiesSuggestions = JSON.parse(document.getElementById('specialties-suggestions-data').textContent);
+                const disordersSuggestions = JSON.parse(document.getElementById('disorders-suggestions-data').textContent);
+                const featuresSuggestions = JSON.parse(document.getElementById('features-suggestions-data').textContent);
 
-                //　次にtreatment-suggestions-dataを取得してみる
-                const treatmentData = document.getElementById('treatment-suggestions-data');
-                const treatmentDisplay = document.getElementById('treatement-input-field');
-                console.log(treatmentData,treatmentDisplay);
 
-                //　クリックされたら、イベントが発動するようにする？
-                treatmentDisplay.addEventListener('click',oneClick);
+                    // 各タグを取得する共通化された関数を作成
+                function initTagEditor(fieldIdPrefix,suggestions) {
+                    // タグを取得していく
+                    const displayArea = document.getElementById(`${fieldIdPrefix}-display-area`); // 表示エリア
+                    const inputField = document.getElementById(`${fieldIdPrefix}-input-field`);
+                    const hiddenInput = document.getElementById(`${fieldIdPrefix}-hidden-input`);
 
-                //　動作の内容
-                function oneClick() {
-                    alert(treatmentData);
+                    // ページ読み込み後、タグを表示させる
+                    suggestions.forEach ( item => {
+                        // 繰り返し処理で新しくタグを作成する
+                        const tag = document.createElement('div');
+                        //　定数tag（作成したdivタグ）にクラスメイをtagと命名
+                        tag.classList.add('tag');
+                        // tagのテキストにitem.nameを代入
+                        tag.textContent = typeof item === 'string' ? item : item.name;
+
+                        // クリックで選択欄に追加する
+                        tag.addEventListener('click',function (){
+                            const text = typeof item === 'string' ? item : item.name;
+
+                            // filter(Boolean)でカンマの位置を制御？
+                            const current = inputField.value.split(',').map(t => t.trim()).filter(Boolean);
+                            if (!current.includes(text)) {
+                                current.push(text);
+                                inputField.value = current.join(',');
+                                hiddenInput.value = inputField.value;
+                            }
+                            
+                        /*
+                        const already = Array.from(displayArea.querySelectorAll('.selectedTag')).some(t => t.textContent === tag.textContent);
+                        if (!already) {
+                            const clone = tag.cloneNode(true);
+                            clone.classList.add('selectedTag');
+                            inputField.appendChild(clone);
+                            updateHiddenInput(fieldIdPrefix);
+                        }
+                        */
+                        });
+
+                            // 画面に表示する
+                            displayArea.appendChild(tag);
+                    });
                 }
-                
-            });
+                    // hidden-input(データ送信を行うため)を更新するための関数を共通化
+                function updateHiddenInput(fieldIdPrefix) {
+                    const displayArea = document.getElementById(`${fieldIdPrefix}-display-area`); // 表示エリア
+                    const hiddenInput = document.getElementById(`${fieldIdPrefix}-hidden-input`); // 送信エリア
 
+                        // 表示エリアに表示された'tag'を全て取得
+                    const allTags = displayArea.querySelectorAll('.tag');
+                        // そのtagを全て配列かして、、、処理内容不明。特にchildNodes[0].nodeValue.ここの部分。
+                    const names = Array.from(allTags).map(tag => {
+                        return tag.childNodes[0].nodeValue.trim();
+                    });
+                    
+                    hiddenInput.value = names.join(',');
+                    }
+
+                    // 各タグ取得のために共通化された関数に各タグの情報を与える
+                    initTagEditor('treatment',treatmentSuggestions);
+                    initTagEditor('specialties',specialtiesSuggestions);
+                    initTagEditor('disorders',disordersSuggestions);
+                    initTagEditor('features',featuresSuggestions);
+            
+                });
+        
+                
+            
+                
+
+           
+
+               
+
+               
+
+           
         </script>
+
+            <label for="homePage_url">HP</label>
+            <input id="homePage_url" type="text" name="homepage_url">
+
+            <label for="map_url">地図URL</label>
+            <input id="map_url" type="text" name="map_url">
+
+            <label for="phone">電話番号</label>
+            <input id="phone" type="text" name="phone">
+
+            <div style="text-align: center;">  
+                <button type="submit" class="btn">保存する</button>
+            </div>
+    </form>
+</div>
+<footer>精神科評価サイト</footer>
+
+</body>
+</html>
+
+{{--クリックしなくても、表示させておく
+よく使うタグ一覧をウインドウとして用意。
+タグをクリックすると入力欄に--}}
+
+{{--
+/*    
+//　次にtreatment-suggestions-dataを取得してみる。josnデータがある。画面には出してないけど、jsonデータが入ってる。
+const treatmentData = document.getElementById('treatment-suggestions-data');
+    // 治療法の入力欄
+    const treatmentDisplay = document.getElementById('treatement-input-field'); 
+    // タグが表示される場所
+    const treatmentDisplayArea = document.getElementById('treatment-display-area'); 
+
+    // タグをHMTLに渡す
+    const treatmentHidden = document.getElementById('treatment-hidden-input');
+
+    // console.log(treatmentData,treatmentDisplay); treatmentDisplayやtreatmentDataが取得されているかテストする。 OK
+    // treatmentDataをJSで使用できるようにする。ここでオブジェクトになっている。
+    const suggestions = JSON.parse(treatmentData.textContent);
+    // console.log(suggestions); テストで表示　OK
+
+    //　クリックされたら、treatment-display-areaに表示させたい。jsonのデータを文字列として。
+    treatmentDisplay.addEventListener('click',function() {
+        // 表示エリアをリセット?
+        treatmentDisplayArea.innerHTML = '';
+
+
+
+        // 各タグ（name）を取り出して処理する（suggestionsはオブジェクトになっているため）JSONklaravelparseした配列を１つ１つ繰り返し処理する
+        suggestions.forEach(item => {
+            // 新しくタグ（div）の作成。createで作成する。　createElemntの所はsetAttributeでも良さそう。
+            const tag = document.createElement('div');
+            // class名をtagとする（見た目用）
+            tag.classList.add('tag');
+
+            // 中身のテキストを追加（divの中に治療法の名前を入れる）
+            tag.textContent = item.name;
+
+            // バツボタンを作成する
+            const btn = document.createElement('button');
+            btn.textContent = '✖︎';
+            btn.classList.add('remove-btn');
+
+            //　ボタン（btn）をクリックした際に、タグは削除されるようにする。
+            btn.addEventListener('click',function(){
+                    tag.remove();  
+                    //　削除したものをデータに保存するためにHTMLに保持させる処理
+                    updateHiddenInput();          
+                    
+                    
+            });
+            // ばつボタンをタグに追加する
+            tag.appendChild(btn);
+
+            // タグを表示エリアに追加
+            treatmentDisplayArea.appendChild(tag);
+
+        });
+
+        // suggestionsを加工。オブジェクト（連想配列状態）のためnameのみを取り出す。また、join()でカンマ区切りにする OK
+        // const names = suggestions.map(item => item.name).join(','); OK
+
+        // 表示する。
+        // treatmentDisplayArea.innerText = names; OK
+
+    });
+
+    // タグ一覧を取得する関数。foreachの中で使用するが、ただの定義のため関数外に記載。
+    function updateHiddenInput() {
+        //　タグを取得する。タグを表示しているエリアのタグ全てを指定。NodeListになってるらしい
+        const alltags = treatmentDisplayArea.querySelectorAll('.tag');
+        // NodeListを普通の配列にするらしい
+        const names = Array.from(alltags).map(tag => {
+            return tag.childNodes[0].nodeValue.trim();
+        });
+
+        treatmentHidden.value = names.join(',');
+   }
+    */
+
+   --}}
+        
+    
 
             {{--
             //　ページ全体が読み込まれて時に実行されるようにする。
@@ -165,33 +336,3 @@
             
         
     
-
-
-
-
-        
-
-       
-
-        
-        <label for="homePage_url">HP</label>
-        <input id="homePage_url" type="text" name="homepage_url">
-
-        <label for="map_url">地図URL</label>
-        <input id="map_url" type="text" name="map_url">
-
-        <label for="phone">電話番号</label>
-        <input id="phone" type="text" name="phone">
-
-        <div style="text-align: center;">
-            <button type="submit" class="btn">保存する</button>
-        </div>
-    </form>
-</div>
-<footer>精神科評価サイト</footer>
-
-
-
-</body>
-</html>
-
