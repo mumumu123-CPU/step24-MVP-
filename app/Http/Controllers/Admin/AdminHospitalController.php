@@ -75,28 +75,53 @@ class AdminHospitalController extends Controller
 
         public function store(Request $request)
         {
-            // バリデーション
-            $validated = $request->validate([
-                'name' => 'required|string|max:255',
-                'address' => 'required|string',
-                'prefecture' => 'required|string',
-                'type' => 'required|string',
-                'station' => 'nullable|string',
-                'am_open' => 'nullable|string',
-                'pm_open' => 'nullable|string',
-                'day_of_week' => 'nullable|string',
-                'treatment' => 'nullable|string',
-                'feature' => 'nullable|string',
-                'homepage_url' => 'nullable|url',
-                'map_url' => 'nullable|url',
-                'phone' => 'nullable|string',
-                'disorders' => 'nullable|string',   // カンマ区切りで来る想定
-                'specialties' => 'nullable|string',
+            //　一旦、入力された情報は全て保存する、バリデーションは後で行う
+            $hospital = Hospital::create([
+                'name' => $request->input('name'),
+                'address' => $request->input('address'),
+                'type' => $request->input('type'), 
+                'homepage_url' => $request->input('homepage_url'), 
+                'map_url' => $request->input('map_url'),
+                'prefecture' => $request->input('prefecture'), 
+                'station' => $request->input('station'), 
+                'day_of_week' => $request->input('day_of_week'),
+                'am_open' => $request->input('am_open'), 
+                'pm_open' => $request->input('pm_open'), 
+                'treatment' => $request->input('treatment'), 
+                'feature' => $request->input('feature'),
+                'phone' => $request->input('phone'),
             ]);
+
+            return redirect()->route('admin.hospitals.index')->with('success','病院情報を登録しました');
+
+            /*
+            try {
+                $validated = $request->validate([
+                    'name' => 'required|string|max:255',
+                    'address' => 'required|string',
+                    'prefecture' => 'required|string',
+                    'type' => 'required|string',
+                    'station' => 'nullable|string',
+                    'am_open' => 'nullable|string',
+                    'pm_open' => 'nullable|string',
+                    'day_of_week' => 'nullable|string',
+                    'treatment' => 'nullable|string',
+                    'feature' => 'nullable|string',
+                    'homepage_url' => 'nullable|url',
+                    'map_url' => 'nullable|url',
+                    'phone' => 'nullable|string',
+                    'disorders' => 'nullable|string',   // カンマ区切りで来る想定
+                    'specialties' => 'nullable|string',
+                    ]);
+            } catch (\Illuminate\Validation\ValidationException $e) {
+                dd($e->errors());
+            }
+        
         
             // 病院情報を登録
             $hospital = \App\Models\Hospital::create($validated);
-        
+            dd('テスト3');
+            
             // カンマ区切りを → 配列 → IDに変換
             $disorderNames = explode(',', $request->input('disorders')); // 例: ['うつ病', 'パニック障害']
             $specialtyNames = explode(',', $request->input('specialties')); // 例: ['うつ病外来', 'トラウマ外来']
@@ -109,6 +134,7 @@ class AdminHospitalController extends Controller
             $hospital->specialties()->sync($specialtyIds);
         
             return redirect()->route('admin.hospitals.index')->with('success', '病院を登録しました！');
+            */
         }
 
 

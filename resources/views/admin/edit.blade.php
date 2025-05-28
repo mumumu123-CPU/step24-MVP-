@@ -69,6 +69,11 @@
                             <input type="text" name="map_url" value="{{ $hospital->map_url }}" class="border rounded w-full">
                         </div>
 
+                        <div class="mt-4">
+                            <label>電話番号：</label>
+                            <input type="text" name="phone" value="{{ $hospital->phone }}" class="border rounded w-full">
+                        </div>
+
                         <div class="mt-6">
                             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">更新する</button>
                         </div>

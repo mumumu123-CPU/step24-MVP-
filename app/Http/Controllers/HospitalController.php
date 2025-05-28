@@ -31,7 +31,7 @@ class HospitalController extends Controller
         }
 
         // データ取得
-        $hospitals = $query->get();
+        $hospitals = $query->paginate(20); 
 
         // ドロップダウン用データ
         $prefectures = json_decode(file_get_contents(storage_path('app/json/prefectures.json')), true);

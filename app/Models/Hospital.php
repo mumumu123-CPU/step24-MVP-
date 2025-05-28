@@ -21,6 +21,7 @@ class Hospital extends Model
     ];
     
     public function specialties() {
+        // 多対多
         return $this->belongsToMany(Specialty::class, 'specialty_hospital');
         
     }
@@ -30,6 +31,7 @@ class Hospital extends Model
     }
 
     public function reviews () {
+        // １対多
         return $this->hasMany(Review::class);
     }
 }

@@ -140,29 +140,10 @@ class HospitalFactory extends Factory
             'pm_open' => $pm_open,
             'feature' => implode(', ', $finalFeatures),
             'treatment' => implode(', ', array_merge($defaultTreatment, $treatmentOptions)),
+            'phone' => $this->faker->phoneNumber,
         ];
 
-        /*
-        return [
-            'name' => $this->faker->lastName . collect([
-                'メンタルクリニック', 'こころのクリニック', '病院', '心療内科', '医療センター'
-            ])->random(),
-
-            'address' => $this->faker->address,
-            'type' => $type,
-            'homepage_url' => $this->faker->url,
-            'map_url' => $this->faker->url,
-
-            'prefecture' => collect($prefectures)->random(),
-            'station' => $this->faker->city . '駅',
-            'day_of_week' => collect($dayOfWeeks)->random(),
-            'am_open' => collect($amOpens)->random(),
-            'pm_open' => collect($pmOpens)->random(),
-
-            'feature' => implode(', ', $finalFeatures),
-            'treatment' => implode(', ', array_merge($defaultTreatment, $treatmentOptions)),
-        ];
-        */
+        
     }
 
 }

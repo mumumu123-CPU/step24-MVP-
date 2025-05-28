@@ -26,6 +26,7 @@
 
     <p><strong>特徴：</strong>{{ implode('、', explode(', ', $hospital->feature)) }}</p>
     <p><strong>治療法：</strong>{{ implode('、', explode(', ', $hospital->treatment)) }}</p>
+    <p><strong>電話番号：</strong>{{ implode('、', explode(', ', $hospital->phone)) }}</p>
 
     <p><strong>ホームページ：</strong><a href="{{ $hospital->homepage_url }}" target="_blank">{{ $hospital->homepage_url }}</a></p>
     <p><strong>地図URL：</strong><a href="{{ $hospital->map_url }}" target="_blank">地図を開く</a></p>
