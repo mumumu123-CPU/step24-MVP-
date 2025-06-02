@@ -11,7 +11,7 @@ use App\Models\Review;
 class Hospital extends Model
 {
     use HasFactory;
-
+// PDO
     // App\Models\Hospital.php
     protected $fillable = [
         'name', 'address', 'type', 'homepage_url', 'map_url',
@@ -19,7 +19,7 @@ class Hospital extends Model
         'am_open', 'pm_open', 'treatment', 'feature',
         'phone',
     ];
-    
+    // 関数名＝リレーション名
     public function specialties() {
         // 多対多
         return $this->belongsToMany(Specialty::class, 'specialty_hospital');

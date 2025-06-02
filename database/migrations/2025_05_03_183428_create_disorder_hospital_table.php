@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->foreignId('disorder_id')
                   ->constrained()
+                  // 親が消されたら、子も道連れにする
                   ->onDelete('cascade');
 
             $table->foreignId('hospital_id')

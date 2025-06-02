@@ -4,17 +4,29 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminHospitalController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\Auth\AdminLoginController;
 
-//ウェルカム画面のへルートのため、コメントアウトコメントアウトする？
+/*ウェルカム画面のへルートのため、コメントアウトコメントアウト
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 // ユーザー用の病院一覧ページ表示
-Route::get('/hospitals', [HospitalController::class, 'index'])->name('hospital.index');
+Route::get('/', [HospitalController::class, 'index'])->name('hospital.index');
+
+Route::get('/result',[HospitalController::class,'resultView'])->name('hospital.result');
 
 // ユーザー用の病院詳細ページ表示
 Route::get('/hospitals/{id}', [HospitalController::class, 'show'])->name('hospital.show');
+
+// 管理者ログインへのページ
+Route::get('/admin', [AdminLoginController::class, 'login'])->name('admin.login.form');
+// 管理者ログイン情報を受け取る
+Route::post('/admin/login', [AdminLoginController::class,'loginPost'])->name('admin.login.post');
+
+// 管理者ログアウト
+Route::post('/admin/logout',[AdminLoginController::class, 'logout'])->name('admin.logout');
 
 // 管理者画面のページを表示
 Route::middleware(['auth'])->prefix('admin')->group(function () {

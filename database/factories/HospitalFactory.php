@@ -17,24 +17,29 @@ class HospitalFactory extends Factory
      */
     public function definition(): array
     {
+        // type（hospital / clinic）について
+        // Factoryで名前の付け方を分けるために導入
+        // 病院: 「〇〇病院」「〇〇医療センター」
+        // クリニック: 「〇〇メンタルクリニック」「〇〇心療内科」
+        // ただしFactoryだけだと内容との整合性は取れない
+        // →　例：通院しかできないのに「病院」になる等
+        // そのためtypeを明示することで、以下が可能
+        // - 名前の付け方コントロール
+        // - 入院/通院の判定に活用
+        // 今後に活用方法
+        // - 検索時のフィルタ条件に使用（例：「病院のみ」表示
+        // - ポートフォリオ上で病院/クリニックの違いを明示できる
+        
         // hospitalは40％の確率で生成
         $type = $this->faker->boolean(40) ? 'hospital' : 'clinic';
         
         //　fakerで作成したもの「市」を取り除く処理。str_replaceの第１引数に変換したい文字を指定。第２引数に変換後の内容指定。第３引数には検索したい文字列を指定。
         $cityName = str_replace('市', '', $this->faker->city);
 
-        // 写経
-        // $cityName = str_replace('市','' $this->faker->city);
-
         // typeがhospitalであれば、「病院」か「医療センタ」をつける。そうでなければ、「メンタルクリニック」等をつける。
         $name = $type === 'hospital'
             ? $cityName . collect(['病院', '医療センター'])->random()
             : $cityName . collect(['メンタルクリニック', '心療内科', 'こころのクリニック'])->random();
-
-        // 写経 疑問　typeがhospitalであれば$nameの値をどうするかというコードだが、returnは必要ないのか？また、collect([])としているが[]はこの場合、どのような意味をもって使用されているのか
-        // $name = $type === 'hospital'
-        // ? $cityName . collect(['病院','医療センター'])->random();
-        // : $cityName . collect(['メンタルクリニック','心療内科','こころのクリニック'])->random();
 
         // 各JSONデータの読み込み。trueなので連想配列として保存。json_decodeでjosonファイルをphpの配列として使用できるように加工（file_get_contesntsでjsonの中身を文字列に変換。josn_decodeのtrueでphpの配列に変換。jsonファイルを読み込むため、storage_pathでstorageディレクトリの中のファイルを指定。）
         $prefectures = json_decode(file_get_contents(storage_path('app/json/prefectures.json')), true);
@@ -44,23 +49,15 @@ class HospitalFactory extends Factory
         $features = json_decode(file_get_contents(storage_path('app/json/features.json')), true);
         $treatments = json_decode(file_get_contents(storage_path('app/json/treatments.json')), true);
 
-        // 写経
-        // $prefucture = json_decode(file_get_contents(storage_path('app/json/prefectures.json')),true);
-        // $dayOfWeeks = json_decode(file_get(storage_patgh('app/json/day_of_week.josn')),true);
 
         // 配列操作を簡単にするためにコレクション化　
         $amSource = collect($amOpens);
         $pmSource = collect($pmOpens);
 
-        // 写経
-        // $amSource = collect($amopens);
 
         // 読み込んだ医療機関の営業時間の先頭や末尾の空白を取り除き、１つだけランダム化して$amや$pmに代入。trimが取り除く機能
         $am = trim($amSource->random());
         $pm = trim($pmSource->random());
-
-        // 写経
-        // $am = trim($amSource->random());
 
         // $typeがclinicであれば、
         if ($type === 'clinic') {
@@ -86,24 +83,7 @@ class HospitalFactory extends Factory
             $pm_open = $pm;
         }
 
-        /*　写経
-        if($type === 'clinic') {
-            $validAm = $amSource->reject(fn($a) => str_contains($a, '午前診療なし'))->values();
-            $validPm = $pmSource->reject(fn($a) => str_contains($a, '午後診療なし'))->values();
-
-            if(str_contains($am,'午前診療なし')) {
-                $am_open = '';
-                $pm_open = $validAm->isNotEmpty() ? $validAm->random() : '13:00~16:00';
-            } elseif (str_contains($pm,'午後診療なし')) {
-                $pm_open = '';
-                $am_open = $validPm->isNotEmpty() ? $validPm->random() : '09:00~12:00';
-            }
-        } else {
-            $am_open = $am;
-            $pm_opne = $pm;
-
-         }
-        */
+       
 
 
 

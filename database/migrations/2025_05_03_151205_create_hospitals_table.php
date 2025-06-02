@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hospitals', function (Blueprint $table) {
-            $table->id();//主キー
+        // Schema(設計士)　Blueprint（大工）設計士が作成。何を'hospitals'を。大工を呼び出して$tableで呼び出す。ちなみに$tableは$unkoでもOK
+        Schema::create('hospitals', function (Blueprint $table) { //Blueprint（大工） $tableはBlueprint（大工）のインスタンス
+            $table->id();//主キー   
             $table->string('name');//病院名
             $table->string('address');//住所
             $table->string('type')->default('clinic');//tyoe(病院の種類)
