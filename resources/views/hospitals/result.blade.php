@@ -11,7 +11,7 @@
       <div class="relative overflow-hidden bg-green-800 bg-opacity-40 p-6 rounded mb-6 shadow min-h-[700px]">
         <!--背景動画-->
         <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-          <source src="{{ asset('assets/hero2.mp4') }}" type="video/mp4"></video>
+          <source src="{{ asset('assets/videos/hero2.mp4') }}" type="video/mp4"></video>
 
         <!--前面のテキスト（動画の上に表示）-->
         <div class="relative z-10 flex items-center justify-center h-full">
