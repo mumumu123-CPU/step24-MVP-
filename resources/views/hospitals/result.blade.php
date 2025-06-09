@@ -1,10 +1,13 @@
 <x-app-layout>
-  <x-slot name="header">
-    <div class="flex justify-between items-center">
-      <a href="{{ route('hospital.index') }}" class="text-lg text-gray-800 font-bold hover:underline">精神科評価サイト</a>
-      <a href="{{ route('admin.login.form') }}" class="text-lg text-gray-700 font-bold hover:underline">管理者ログイン</a>
-    </div>
-  </x-slot>
+  <!--　固定ヘッダー -->
+  <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+    <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
+      精神科評価サイト
+    </a>
+    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-700 font-bold hover:underline">
+      管理者ログイン
+    </a>
+  </div>
 
   <div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
   <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -15,15 +18,15 @@
     <section class="relative min-h-[600px] flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row z-10">
       <!-- content - start -->
       <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
-        <p class="text-5xl font-bold text-gray-800 tracking-wide">検索結果</p>
+        <p class="text-[40px] font-bold text-gray-800 tracking-wide">検索結果</p>
       </div>
     </section>
   </div>
 </div>
 
 <section class="max-w-screen text-center py-12  py-12 px-4 bg-brand-100 bg-opacity-30 border-b border-gray-300 w-full">
-  <h2 class="text-3xl font-bold text-gray-800 mb-4 mx-auto">病院を探す</h2>
-  <p class="text-lg text-gray-600 mb-6">
+  <h2 class="text-[32px] font-bold text-gray-800 mb-4 mx-auto">病院を探す</h2>
+  <p class="text-base text-gray-600 mb-6">
     条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
   </p>
 <form method="GET" action="{{ route('hospital.result') }}" class="border-none p-4 flex flex-wrap justify-center gap-4 mb-6">
@@ -46,17 +49,16 @@
         <option value="{{ $pref }}" {{ request('prefecture') == $pref ? 'selected' : '' }}>{{ $pref }}</option>
       @endforeach
   </select>
-    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">検索</button>
+    <button type="submit" class="bg-green-600 text-white text-base px-6 py-2 rounded hover:bg-green-700">検索</button>
 </form>
 </section>
 
-      
 
 <div class="bg-brand-100 bg-opacity-30 py-6 sm:py-8 lg:py-12">
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
- <div class="mb-6 text-center">
-      <h2 class="text-2xl font-bold text-gray-800 lg:text-3xl mb-4">病院一覧</h2>
+   <div class="mb-6 text-center">
+      <h2 class="text-[32px] font-bold text-gray-800 lg:text-3xl mb-4">病院一覧</h2>
       @if ($hospitals->isEmpty())
         <p class="text-red-500 font-bold">該当する病院は見つかりませんでした。</p>
       @endif
@@ -69,12 +71,12 @@
             <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" alt="{{ $hospital->name }}" class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
           </a>
           <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ $hospital->name }}</h3>
-            <p class="text-sm text-gray-600 mb-1"><strong>所在地：</strong>{{ $hospital->address }}</p>
-            <p class="text-sm text-gray-600 mb-1">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ $hospital->name }}</h3>
+            <p class="text-base text-gray-600 mb-2"><strong>所在地：</strong>{{ $hospital->address }}</p>
+            <p class="text-base text-gray-600 mb-2">
               <strong>診療時間：</strong>{{ $hospital->am_display }} {{ $hospital->pm_display }}
             </p>
-            <p class="text-sm text-gray-600">
+            <p class="text-base text-gray-600">
               <strong>対象疾患：</strong>
               @foreach ($hospital->disorders as $disorder)
                 {{ $disorder->name }}{{ !$loop->last ? '、' : '' }}
@@ -87,16 +89,14 @@
   </div>
 </div>
 
-      <div class="mt-6 flex justify-center">
-        {{ $hospitals->links('vendor.pagination.tailwind') }}
-      </div>
-    </div>
 
+<div class="bg-brand-100 bg-opacity-30 py-10 flex justify-center">
+  {{ $hospitals->links('vendor.pagination.tailwind') }}
+</div>
   
-<footer class="bg-white text-center py-10">
-  <a href="{{ route('hospital.index') }}" class="text-2xl tetext-gray-800 font-bold hover:underline">
+<footer class="bg-white text-center py-6">
+  <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
     精神科評価サイト
   </a>
 </footer>
-  
 </x-app-layout>

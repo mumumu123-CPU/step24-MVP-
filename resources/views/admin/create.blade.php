@@ -1,13 +1,13 @@
 <x-app-layout>
-  <x-slot name="header">
-    <header class="px-6 py-4 flex justify-between items-center">
-        <a href="{{ route('admin.hospitals.index') }}" class="text-lg font-bold text-gray-800 hover:underline">精神科評価サイト</a>
-        <form method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-                <button type="submit" class="text-xl font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
-        </form>
-    </header>
-  </x-slot>
+    <!--　固定ヘッダー -->
+  <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+    <a href="{{ route('admin.hospitals.index') }}" class="text-base text-gray-800 font-bold hover:underline">
+      精神科評価サイト
+    </a>
+    <a href="{{ route('admin.logout') }}" class="text-base text-gray-700 font-bold hover:underline">
+      管理者ログイン
+    </a>
+  </div>
 
   @if (session('success'))
     <div class="bg-green-100 text-green-800 border border-green-400 p-4 rounded mb-4 text-center">
@@ -15,14 +15,15 @@
     </div>
     @endif
 
-  <h2 class="text-xl font-bold text-center text-gray-800 mt-6 mb-4">病院情報入力フォーム</h2>
+  
 
-  <div class="bg-blue-200 min-h-screen py-6 px-4">
+  <div class="bg-blue-200 min-h-screen px-4 py-24">
+    
     <div class="bg-white rounded-lg shadow-md max-w-2xl mx-auto p-6">
       @if ($errors->any())
         <div class="bg-red-100 text-red-800 text-sm p-4 mb-4 rounded">入力に誤りがあります。内容をご確認ください。</div>
       @endif
-
+        <h2 class="text-xl font-bold text-center text-gray-800">病院情報入力フォーム</h2>
       <form method="POST" action="{{ route('admin.hospitals.store') }}">
         @csrf
 

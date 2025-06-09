@@ -27,7 +27,7 @@
     
     <div class="bg-sky-500 bg-opacity-30 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="bg-white shadow rounded-lg p-6 mb-6">
+            <div class="bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
                     <div class="lg:w-1/2 space-y-6">

@@ -9,88 +9,99 @@
             </div>
     </x-slot>
 
+    <!--検索フォーム-->
+    <section class="max-w-screen text-center py-12  py-12 px-4 bg-sky-500 bg-opacity-30 border-b border-gray-400 w-full">
+  <h2 class="text-3xl font-bold text-gray-800 mb-4 mx-auto">管理者画面</h2>
+  <!--
+  <p class="text-lg text-gray-600 mb-6">
+    条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
+  </p>
+  -->
+<form method="GET" action="{{ route('admin.hospitals.index') }}" class="border-none p-4 flex flex-wrap justify-center gap-4 mb-6">
+    
+  <select name="specialty_id" class="border rounded px-4 py-2">
+    <option value="">専門外来</option>
+      @foreach ($specialties as $specialty)
+        <option value="{{ $specialty->id }}" {{ request('specialty_id') == $specialty->id ? 'selected' : '' }}>{{ $specialty->name }}</option>
+      @endforeach
+  </select>
+  <select name="disorder_id" class="border rounded px-4 py-2">
+    <option value="">疾患</option>
+      @foreach ($disorders as $disorder)
+        <option value="{{ $disorder->id }}" {{ request('disorder_id') == $disorder->id ? 'selected' : '' }}>{{ $disorder->name }}</option>
+      @endforeach
+  </select>
 
-    <div class="bg-blue-200 min-h-screen py-6 px-8">
-        <!--検索フォーム-->
-        <div class="w-full flex justify-center mb-6">
-            <form method="GET" action="{{ route('admin.hospitals.index') }}" class="flex gap-4 mb-6">
-                <select name="prefecture" class="border rounded px-4 py-1 w-40">
-                    <option value="">都道府県</option>
-                    @foreach ($prefectures as $pref)
-                        <option value="{{ $pref }}" {{ request('prefecture') == $pref ? 'selected' : '' }}>{{ $pref }}</option>
-                    @endforeach
-                </select>
-                <select name="disorder_id" class="border rounded px-2 py-1">
-                    <option value="">疾患</option>
-                    @foreach ($disorders as $disorder)
-                        <option value="{{ $disorder->id }}" {{ request('disorder_id') == $disorder->id ? 'selected' : '' }}>{{ $disorder->name }}</option>
-                    @endforeach
-                </select>
-                <select name="specialty_id" class="border rounded px-2 py-1">
-                    <option value="">専門外来</option>
-                    @foreach ($specialties as $specialty)
-                        <option value="{{ $specialty->id }}" {{ request('specialty_id') == $specialty->id ? 'selected' : '' }}>{{ $specialty->name }}</option>
-                    @endforeach
-                </select>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded">検索</button>
-            </form>
-        </div>
-        <div class="mb-6">
+  <select name="prefecture" class="border rounded px-4 py-2 w-48">
+    <option value="">都道府県</option>
+      @foreach ($prefectures as $pref)
+        <option value="{{ $pref }}" {{ request('prefecture') == $pref ? 'selected' : '' }}>{{ $pref }}</option>
+      @endforeach
+  </select>
+    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">検索</button>
+</form>
+</section>
+
+
+
+<!-- 特徴セクション全体を包むグリーン背景 -->
+<div class="bg-sky-500 bg-opacity-30 py-20 px-4 border-b border-gray-300">
+  
+  <!-- 白枠カード部分 -->
+  <div class="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
+
+           <div class="mb-6">
             <a href="{{ route('admin.hospitals.create') }}" class="block bg-orange-400 text-white text-center py-2 rounded">病院を登録する</a>
         </div>
+    
+<div class="overflow-x-auto">
+           <table class="min-w-full bg-white rounded shadow">
+    <thead class="bg-gray-200 text-gray-700">
+        <tr class="text-center">
+            <th class="w-12 px-2 py-2">選択</th>
+            <th class="w-16 px-2 py-2">ID</th>
+            <th class="px-4 py-2 text-lg">病院名</th> <!-- ← 文字大きめ -->
+            <th class="w-16 px-2 py-2">編集</th>
+            <th class="w-16 px-2 py-2">削除</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($hospitals as $hospital)
+            <tr class="text-center border-b">
+                <td class="w-12 px-2 py-2">
+                    <input type="checkbox" name="hospital_ids[]" value="{{ $hospital->id }}">
+                </td>
+                <td class="w-16 px-2 py-2">{{ $hospital->id }}</td>
+                <td class="px-4 py-2 text-base font-medium">
+                    <a href="{{ route('admin.hospitals.show', $hospital->id) }}" class="text-blue-600 underline">
+                        {{ $hospital->name }}
+                    </a>
+                </td>
+                <td class="w-16 px-2 py-2">
+                    <a href="{{ route('admin.hospitals.edit', $hospital->id) }}">✏️</a>
+                </td>
+                <td class="w-16 px-2 py-2">
+                    <form method="POST" action="{{ route('admin.hospitals.destroy', $hospital->id) }}"
+                          onsubmit="return confirm('本当に削除しますか？');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">🗑️</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+        </div>
+    
+  </div>
 
-        <!-- ページネーション（上部）
+   <!-- ページネーション（下部） -->
         <div class="flex justify-center my-4">
             {{ $hospitals->links('vendor.pagination.tailwind') }}
         </div>
-         -->
+</div>
 
-        <!-- 病院一覧テーブル -->
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white rounded shadow">
-                <thead class="bg-gray-200 text-gray-700">
-                    <tr>
-                        <th class="px-4 py-2">選択</th>
-                        <th class="px-4 py-2">ID</th>
-                        <th class="px-4 py-2">病院名</th>
-                        <th class="px-4 py-2">編集</th>
-                        <th class="px-4 py-2">削除</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($hospitals as $hospital)
-                        <tr class="text-center border-b">
-                            <td class="px-4 py-2">
-                                <input type="checkbox" name="hospital_ids[]" value="{{ $hospital->id }}">
-                            </td>
-                            <td class="px-4 py-2">{{ $hospital->id }}</td>
-                            <td class="px-4 py-2">
-                                <a href="{{ route('admin.hospitals.show', $hospital->id) }}" class="text-blue-600 underline">
-                                    {{ $hospital->name }}
-                                </a>
-                            </td>
-                            <td class="px-4 py-2">
-                                <a href="{{ route('admin.hospitals.edit', $hospital->id) }}">✏️</a>
-                            </td>
-                            <td class="px-4 py-2">
-                                <form method="POST" action="{{ route('admin.hospitals.destroy', $hospital->id) }}"
-                                      onsubmit="return confirm('本当に削除しますか？');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit">🗑️</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-        <!-- ページネーション（下部） -->
-        <div class="flex justify-center my-4">
-            {{ $hospitals->links('vendor.pagination.tailwind') }}
-        </div>
-    </div>
     <footer class="bg-blue-100 text-center py-4">
         <a href="{{ route('admin.hospitals.index') }}" class="text-gray-800 font-bold hover:underline">
             精神科評価サイト

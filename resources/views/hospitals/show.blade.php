@@ -1,11 +1,14 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between items-center">
-        <a href="{{ route('hospital.index') }}" class="text-lg text-gray-800 font-bold hover:underline">精神科評価サイト</a>
-        <a href="{{ route('admin.login.form') }}" class="text-lg text-gray-700 font-bold hover:underline">管理者ログイン</a>
-        </div>
-    </x-slot>
 
+  <!--　固定ヘッダー -->
+  <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+    <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
+      精神科評価サイト
+    </a>
+    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-700 font-bold hover:underline">
+      管理者ログイン
+    </a>
+  </div>
 
 <div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
   <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -16,7 +19,7 @@
     <section class="relative min-h-[600px] flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row z-10">
       <!-- content - start -->
       <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
-        <p class="text-5xl font-bold text-gray-800 tracking-wide">病院の詳細情報</p>
+        <p class="text-[40px] font-bold text-gray-800 tracking-wide">病院の詳細情報</p>
       </div>
     </section>
   </div>
@@ -26,16 +29,17 @@
 
     <div class="bg-brand-100 bg-opacity-30 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="bg-white shadow rounded-lg p-6 mb-6">
+            <div class="bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
                     <div class="lg:w-1/2 space-y-6">
-                        <h1 class="text-2xl font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
+                        <h1 class="text-[32px] font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
                         <!--ダミー画像。画像のサイズを固定。はみ出た部分は表示しない。-->
                         <div class="bg-gray-200 w-[500px] h-[300px] flex items-center justify-center mx-auto overflow-hidden rounded">
-                            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" class="object-cover w-full h-full"/></div>
+                            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" class="object-cover w-full h-full"/>
+                        </div>
                         <div>
-                            <p class="font-semibold mb-2 text-center">診療時間</p>
+                            <p class="text-2xl font-bold mb-4 text-center">診療時間</p>
                             <table class="table-auto w-[500px] text-center border border-gray-400 mx-auto">
                                 <thead class="bg-blue-100">
                                     <tr>
@@ -67,9 +71,9 @@
                         </div>
                     </div>
 
-                    <!-- 右側 -->
+                    <!-- 右側。ここの箇所のみ8の倍数以外を使用しています。８の倍数だと大きすぎたり、小さすぎたりといい塩梅のサイズ感にならなかったためです。 -->
                     <div class="lg:w-1/2 space-y-4 text-sm text-gray-700 mt-16">
-                        <p class="text-lg"><span class="text-lg font-semibold">病院名：</span>{{ $hospital->name }}</p>
+                        <p class="text-lg"><span class="font-semibold text-lg">病院名：</span>{{ $hospital->name }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">所在地：</span>{{ $hospital->address }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">最寄駅：</span>{{ $hospital->station }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">電話番号：</span>{{ $hospital->phone }}</p>
@@ -91,10 +95,12 @@
             </div>
         </div>
     </div>
-
-   <footer class="bg-white text-center py-10">
-  <a href="{{ route('hospital.index') }}" class="text-2xl tetext-gray-800 font-bold hover:underline">
+  
+<footer class="bg-white text-center py-6">
+  <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
     精神科評価サイト
   </a>
+</footer>
+
 </footer>
 </x-app-layout>
