@@ -8,7 +8,7 @@
   </div>
 
   <!--　ヒーロー　-->
-  <section class="relative bg-brand-500 min-h-screen text-white overflow-hidden">
+  <section class="relative min-h-screen text-white overflow-hidden">
     
     <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
           <source src="{{ asset('assets/videos/hero3.mp4') }}" type="video/mp4">
@@ -22,8 +22,8 @@
 
   </section>
 
-<div class="max-w-7xl mx-auto px-4 pt-16 mt-6">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-24 items-center md:items-start py-16 my-6">
+<div class="px-4 py-16 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-24 items-center md:items-start py-16 my-6 mx-auto max-w-screen-xl">
     
     <!-- 左：画像 -->
     <div>
@@ -59,74 +59,47 @@
   </div>
 </div>
 
-<!--　特徴カード　-->
-<div class="bg-white rounded-lg shadow-lg p-8 mt-12 max-w-5xl mx-auto my-20 py-6">
-  <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">このサイトの特徴</h3>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-700 text-center">
+<!-- 特徴セクション全体を包むグリーン背景 -->
+<div class="bg-brand-100 bg-opacity-30 py-20 px-4 border-b border-gray-300">
+  
+  <!-- 白枠カード部分 -->
+  <div class="bg-white rounded-lg shadow-lg p-8 max-w-5xl mx-auto">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">このサイトの特徴</h3>
     
-    <!-- カード1 -->
-    <div class="p-4 border rounded-lg hover:shadow transition">
-      <div class="text-4xl mb-2">🔍</div>
-      <h4 class="font-semibold text-xl mb-2">検索しやすい</h4>
-      <p class="text-sm">専門外来・症状・地域などから、簡単に条件を絞り込めます。</p>
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-700 text-center">
+      
+      <!-- カード1 -->
+      <div class="p-4 border rounded-lg hover:shadow transition">
+        <div class="text-4xl mb-2">🔍</div>
+        <h4 class="font-semibold text-xl mb-2">検索しやすい</h4>
+        <p class="text-sm">専門外来・症状・地域などから、簡単に条件を絞り込めます。</p>
+      </div>
 
-    <!-- カード2 -->
-    <div class="p-4 border rounded-lg hover:shadow transition">
-      <div class="text-4xl mb-2">🗣️</div>
-      <h4 class="font-semibold text-xl mb-2">リアルな口コミ</h4>
-      <p class="text-sm">実際に受診した人の声を参考に、安心して選べます。</p>
-    </div>
+      <!-- カード2 -->
+      <div class="p-4 border rounded-lg hover:shadow transition">
+        <div class="text-4xl mb-2">🗣️</div>
+        <h4 class="font-semibold text-xl mb-2">リアルな口コミ</h4>
+        <p class="text-sm">実際に受診した人の声を参考に、安心して選べます。</p>
+      </div>
 
-    <!-- カード3 -->
-    <div class="p-4 border rounded-lg hover:shadow transition">
-      <div class="text-4xl mb-2">⏰</div>
-      <h4 class="font-semibold text-xl mb-2">情報が豊富</h4>
-      <p class="text-sm">診療時間や予約の有無など、必要な情報を一目で確認できます。</p>
-    </div>
+      <!-- カード3 -->
+      <div class="p-4 border rounded-lg hover:shadow transition">
+        <div class="text-4xl mb-2">⏰</div>
+        <h4 class="font-semibold text-xl mb-2">情報が豊富</h4>
+        <p class="text-sm">診療時間や予約の有無など、必要な情報を一目で確認できます。</p>
+      </div>
 
+    </div>
   </div>
 </div>
 
 
-<!--
-<div class="bg-white py-6 sm:py-8 lg:py-12">
-  <div class="mx-auto max-w-screen-xl px-4 md:px-8">
-    <div class="grid gap-8 md:grid-cols-2 lg:gap-12">
-      <div>
-        <div class="h-64 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
-          <img src="{{ asset('assets/images/image5.jpg') }}" loading="lazy" alt="Photo by Martin Sanchez" class="h-full w-full object-cover object-center" />
-        </div>
-      </div>
-
-      <div class="md:pt-8">
-        <p class="text-center font-bold text-indigo-500 md:text-left">Who we are</p>
-
-        <h1 class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6 md:text-left">Our competitive advantage</h1>
-
-        <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
-          This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated. It may be used to display a sample of fonts or generate text for testing. Filler text is dummy text which has no meaning however looks very similar to real text.<br /><br />
-
-          This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is <a href="#" class="text-indigo-500 underline transition duration-100 hover:text-indigo-600 active:text-indigo-700">random</a> or otherwise generated. It may be used to display a sample of fonts or generate text for testing. Filler text is dummy text which has no meaning however looks very similar to real text.
-        </p>
-
-        <h2 class="mb-2 text-center text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4 md:text-left">About us</h2>
-
-        <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated. It may be used to display a sample of fonts or generate text for testing. Filler text is dummy text which has no meaning however looks very similar to real text.</p>
-      </div>
-    </div>
-  </div>
-</div>
--->
-
-
-
-<section class="max-w-5xl mx-auto text-center my-12 px-4">
-  <h2 class="text-3xl font-bold text-gray-800 mb-4">病院を探す</h2>
+<section class="max-w-screen text-center py-12  py-12 px-4 bg-brand-100 bg-opacity-30 border-b border-gray-300 w-full">
+  <h2 class="text-3xl font-bold text-gray-800 mb-4 mx-auto">病院を探す</h2>
   <p class="text-lg text-gray-600 mb-6">
     条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
   </p>
-<form method="GET" action="{{ route('hospital.result') }}" class="bg-white shadow rounded-lg p-4 flex flex-wrap justify-center gap-4 mb-6">
+<form method="GET" action="{{ route('hospital.result') }}" class="border-none p-4 flex flex-wrap justify-center gap-4 mb-6">
   <select name="specialty_id" class="border rounded px-4 py-2">
     <option value="">専門外来</option>
       @foreach ($specialties as $specialty)
@@ -150,6 +123,57 @@
 </form>
 </section>
 
+
+<div class="bg-brand-100 bg-opacity-30 py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+   <div class="mb-6 text-center">
+      <h2 class="text-2xl font-bold text-gray-800 lg:text-3xl mb-4">病院一覧</h2>
+      @if ($hospitals->isEmpty())
+        <p class="text-red-500 font-bold">該当する病院は見つかりませんでした。</p>
+      @endif
+    </div>
+
+    <div class="grid gap-x-4 gap-y-8 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-2 xl:grid-cols-3">
+      @foreach ($hospitals as $hospital)
+        <div>
+          <a href="{{ route('hospital.show', $hospital->id) }}" class="group relative mb-2 block h-64 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
+            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" alt="{{ $hospital->name }}" class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
+          </a>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ $hospital->name }}</h3>
+            <p class="text-sm text-gray-600 mb-1"><strong>所在地：</strong>{{ $hospital->address }}</p>
+            <p class="text-sm text-gray-600 mb-1">
+              <strong>診療時間：</strong>{{ $hospital->am_display }} {{ $hospital->pm_display }}
+            </p>
+            <p class="text-sm text-gray-600">
+              <strong>対象疾患：</strong>
+              @foreach ($hospital->disorders as $disorder)
+                {{ $disorder->name }}{{ !$loop->last ? '、' : '' }}
+              @endforeach
+            </p>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</div>
+
+
+<div class="bg-white py-10 flex justify-center">
+  {{ $hospitals->links('vendor.pagination.tailwind') }}
+</div>
+  
+<footer class="bg-white text-center py-10">
+  <a href="{{ route('hospital.index') }}" class="text-2xl tetext-gray-800 font-bold hover:underline">
+    精神科評価サイト
+  </a>
+</footer>
+  
+</x-app-layout>
+
+
+
+<!--病院情報を表示する
 @if ($hospitals->isEmpty())
   <p class="text-red-500 font-bold mb-6">該当する病院は見つかりませんでした。</p>
 @endif
@@ -174,16 +198,4 @@
     </div>
   @endforeach
 </div>
-
-<div class="mt-6 flex justify-center">
-  {{ $hospitals->links('vendor.pagination.tailwind') }}
-</div>
-  
-<footer class="text-center py-4">
-  <a href="{{ route('hospital.index') }}" class="text-2xl tetext-gray-800 font-bold hover:underline">
-    精神科評価サイト
-  </a>
-</footer>
-  
-</x-app-layout>
-
+-->

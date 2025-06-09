@@ -35,6 +35,14 @@ export default {
                 'lemon-milk': '#EFF285',
                 'vanilla-haze': '#F0F2B3',
                 'cloud-white': '#F2F2F2',
+
+                //　管理者用
+                'sky-500 ' : '#3D9DD9',
+                'sky-400' : '#55B3D9',
+                'aqua-300 ': '#5EF2F2',
+                'sky-700' : '#2477BF',
+                'aqua-400 ' : '#41CAD9',
+
             },
         },
     },

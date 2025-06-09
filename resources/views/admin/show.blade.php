@@ -9,11 +9,23 @@
         </div>
     </x-slot>
 
-        <div class="bg-green-800 bg-opacity-40 p-6 rounded mb-6 shadow min-h-[700px]">
-            <h1 class="text-5xl font-bold text-white text-center">病院の詳細情報</h1>
-        </div>
+<div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-400 bg-sky-500 bg-opacity-30 p-6 rounded-lg">
+  <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
     
-    <div class="bg-blue-100 min-h-screen py-10 px-6">
+    <!-- グラデーション背景 -->
+    <div class="absolute right-[-1vw] top-[20%] w-[35vw] h-[25vw] bg-green-200 rounded-full blur-[120px] opacity-70 z-0"></div>
+
+    <section class="relative min-h-[600px] flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row z-10">
+      <!-- content - start -->
+      <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
+        <p class="text-5xl font-bold text-gray-800 tracking-wide">病院の詳細情報</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+    
+    <div class="bg-sky-500 bg-opacity-30 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
