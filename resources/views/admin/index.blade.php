@@ -1,16 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
-            <div class="flex justify-between items-center">
-                <h2 class="text-xl font-bold text-gray-800">精神科評価サイト</h2>
-                <form method="POST" action="{{ route('admin.logout') }}">
-                    @csrf
-                    <button type="submit" class="text-xl font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
-                </form>
-            </div>
-    </x-slot>
+    <!--　固定ヘッダー -->
+    <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+        <a href="{{ route('admin.hospitals.index') }}" class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
+        <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <button type="submit" class="text-base font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
+        </form>
+    </div>
 
     <!--検索フォーム-->
-    <section class="max-w-screen text-center py-12  py-12 px-4 bg-sky-500 bg-opacity-30 border-b border-gray-400 w-full">
+    <section class="max-w-screen text-center py-12  pt-24 px-4 bg-sky-500 bg-opacity-30 border-b border-gray-400 w-full">
   <h2 class="text-3xl font-bold text-gray-800 mb-4 mx-auto">管理者画面</h2>
   <!--
   <p class="text-lg text-gray-600 mb-6">
@@ -44,8 +43,8 @@
 
 
 
-<!-- 特徴セクション全体を包むグリーン背景 -->
-<div class="bg-sky-500 bg-opacity-30 py-20 px-4 border-b border-gray-300">
+<!-- 特徴セクション全体を包むブルー背景 -->
+<div class="bg-sky-500 bg-opacity-30 pt-16 pb-6 px-4 border-b border-gray-300">
   
   <!-- 白枠カード部分 -->
   <div class="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
@@ -96,17 +95,18 @@
     
   </div>
 
-   <!-- ページネーション（下部） -->
-        <div class="flex justify-center my-4">
-            {{ $hospitals->links('vendor.pagination.tailwind') }}
-        </div>
+   
 </div>
 
-    <footer class="bg-blue-100 text-center py-4">
-        <a href="{{ route('admin.hospitals.index') }}" class="text-gray-800 font-bold hover:underline">
-            精神科評価サイト
-        </a>
-    </footer>
+<div class="bg-sky-500 bg-opacity-30 py-10 flex justify-center">
+  {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
+</div>
+
+<footer class="bg-white text-center py-6">
+  <a href="{{ route('admin.hospitals.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
+    精神科評価サイト
+  </a>
+</footer>
 </x-app-layout>
 <!--
 <!DOCTYPE html>

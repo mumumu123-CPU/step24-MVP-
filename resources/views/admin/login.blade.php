@@ -1,4 +1,11 @@
-<header class="text-center mt-6 mb-8 text-lg text-gray-800 font-bold">管理者ログイン</header>
+  <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+    <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
+      精神科評価サイト
+    </a>
+    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-700 font-bold hover:underline">
+      管理者ログイン
+    </a>
+  </div>
 <x-guest-layout>
 
 
@@ -51,6 +58,10 @@
     </form>
 </x-guest-layout>
 
-<footer class="text-center mt-6 mb-8">
-    <a href="{{ route('hospital.index') }}" class="text-gray-800 text-lg font-bold hover:underline">精神科評価サイト</a>
+<footer class="bg-white text-center py-6">
+  <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
+    精神科評価サイト
+  </a>
 </footer>
+
+<!--背景色は以下に設定resources/views/layouts/guest.blade.php-->

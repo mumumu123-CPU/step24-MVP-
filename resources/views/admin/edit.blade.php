@@ -1,45 +1,37 @@
 <x-app-layout>
-  <x-slot name="header">
-    <header class="px-6 py-4 flex justify-between items-center">
-        <a href="{{ route('admin.hospitals.index') }}" class="text-lg font-bold text-gray-800 hover:underline">精神科評価サイト</a>
+    <!--　固定ヘッダー -->
+    <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+        <a href="{{ route('admin.hospitals.index') }}" class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
         <form method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-                <button type="submit" class="text-xl font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
+            @csrf
+            <button type="submit" class="text-base font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
         </form>
-    </header>
-  </x-slot>
+    </div>
 
-    @if (session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 text-center">
-            {{ session('success') }}
-        </div>
-    @endif
 
-  <h2 class="text-xl font-bold text-center text-gray-800 mt-6 mb-4">病院情報入力フォーム</h2>
-
-  <div class="bg-blue-200 min-h-screen py-6 px-4">
+  <div class="bg-sky-500 bg-opacity-30 min-h-screen px-4 py-24">
     <div class="bg-white rounded-lg shadow-md max-w-2xl mx-auto p-6">
       @if ($errors->any())
-        <div class="bg-red-100 text-red-800 text-sm p-4 mb-4 rounded">入力に誤りがあります。内容をご確認ください。</div>
+        <div class="bg-red-100 text-red-800 text-base p-4 mb-4 rounded">入力に誤りがあります。内容をご確認ください。</div>
       @endif
-
+      <h2 class="text-xl font-bold text-center text-gray-800">病院情報編集フォーム</h2>
       <form method="POST" action="{{ route('admin.hospitals.update', $hospital->id) }}">
         @csrf
         @method('PUT')
 
         <!-- 病院名 -->
         <label class="block font-medium">病院名</label>
-        <input type="text" name="name" value="{{ old('name',$hospital->name) }}" class="w-full border px-3 py-2 rounded mt-1 @error('name') border-red-500 @enderror">
-        @error('name')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="name" value="{{ old('name',$hospital->name) }}" class="w-full border px-4 py-2 rounded mt-2 @error('name') border-red-500 @enderror">
+        @error('name')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <!-- 所在地 -->
         <label class="block font-medium mt-4">所在地</label>
-        <input type="text" name="address" value="{{ old('address',$hospital->address) }}" class="w-full border px-3 py-2 rounded mt-1">
-        @error('address')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="address" value="{{ old('address',$hospital->address) }}" class="w-full border px-4 py-2 rounded mt-2">
+        @error('address')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <!-- 都道府県 -->
         <label class="block font-medium mt-4">都道府県</label>
-        <select name="prefecture" class="w-full border px-3 py-2 rounded mt-1">
+        <select name="prefecture" class="w-full border px-4 py-2 rounded mt-2">
           @foreach ($prefectures as $pref)
             <option value="{{ $pref }}" {{ old('prefecture',$hospital->prefecture) == $pref ? 'selected' : '' }}>{{ $pref }}</option>
           @endforeach
@@ -47,7 +39,7 @@
 
         <!-- 最寄駅 -->
         <label class="block font-medium mt-4">最寄駅</label>
-        <input type="text" name="station" value="{{ old('station',$hospital->station) }}" class="w-full border px-3 py-2 rounded mt-1" placeholder="例: ○○駅">
+        <input type="text" name="station" value="{{ old('station',$hospital->station) }}" class="w-full border px-4 py-2 rounded mt-2" placeholder="例: ○○駅">
 
 
         <!-- 病院タイプ -->
@@ -67,44 +59,44 @@
 
         <!-- 診療曜日/時間 -->
         <label class="block font-medium mt-4">診療曜日</label>
-        <input type="text" name="day_of_week" value="{{ old('day_of_week',$hospital->day_of_week) }}" placeholder="例: 月火水木金" class="w-full border px-3 py-2 rounded mt-1">
-        @error('day_of_week')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="day_of_week" value="{{ old('day_of_week',$hospital->day_of_week) }}" placeholder="例: 月火水木金" class="w-full border px-4 py-2 rounded mt-2">
+        @error('day_of_week')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <label class="block font-medium mt-4">診療時間（午前）</label>
-        <input type="text" name="am_open" value="{{ old('am_open',$hospital->am_open) }}" placeholder="例: 08:30〜12:00" class="w-full border px-3 py-2 rounded mt-1">
-        @error('am_open')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="am_open" value="{{ old('am_open',$hospital->am_open) }}" placeholder="例: 08:30〜12:00" class="w-full border px-4 py-2 rounded mt-2">
+        @error('am_open')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <label class="block font-medium mt-4">診療時間（午後）</label>
-        <input type="text" name="pm_open" value="{{ old('pm_open',$hospital->pm_open) }}" placeholder="例: 13:00〜17:00" class="w-full border px-3 py-2 rounded mt-1">
-        @error('pm_open')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="pm_open" value="{{ old('pm_open',$hospital->pm_open) }}" placeholder="例: 13:00〜17:00" class="w-full border px-4 py-2 rounded mt-2">
+        @error('pm_open')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <!-- 治療法 -->
         <label class="block font-medium mt-6">治療法</label>
         <div id="treatment-display-area" class="tag-area border p-2 bg-gray-100 rounded mb-2"></div>
-        <input id="treatment-input-field" value="{{ old('treatment', $hospital->treatment) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-3 py-2 rounded">
+        <input id="treatment-input-field" value="{{ old('treatment', $hospital->treatment) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-4 py-2 rounded">
         <input type="hidden" name="treatment" value="{{ old('treatment', $hospital->treatment) }}" id="treatment-hidden-input">
         <div id="treatment-suggestions-data" style="display:none">@json($treatments)</div>
 
         <!-- 専門分野 -->
         <label class="block font-medium mt-6">専門分野</label>
         <div id="specialties-display-area" class="tag-area border p-2 bg-gray-100 rounded mb-2"></div>
-        <input id="specialties-input-field" value="{{ old('specialties', $hospital->specialties->pluck('name')->implode(',')) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-3 py-2 rounded">
+        <input id="specialties-input-field" value="{{ old('specialties', $hospital->specialties->pluck('name')->implode(',')) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-4 py-2 rounded">
         <input type="hidden" name="specialties" value="{{ old('specialties', $hospital->specialties->pluck('name')->implode(',')) }}" id="specialties-hidden-input">
         <div id="specialties-suggestions-data" style="display:none">@json($specialties)</div>
-        @error('specialties')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        @error('specialties')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <!-- 対象疾患 -->
         <label class="block font-medium mt-6">対象疾患</label>
         <div id="disorders-display-area" class="tag-area border p-2 bg-gray-100 rounded mb-2"></div>
-        <input id="disorders-input-field" value="{{ old('disorders', $hospital->disorders->pluck('name')->implode(',')) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-3 py-2 rounded">
+        <input id="disorders-input-field" value="{{ old('disorders', $hospital->disorders->pluck('name')->implode(',')) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-4 py-2 rounded">
         <input type="hidden" name="disorders" value="{{ old('disorders', $hospital->disorders->pluck('name')->implode(',')) }}" id="disorders-hidden-input">
         <div id="disorders-suggestions-data" style="display:none">@json($disorders)</div>
-        @error('disorders')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        @error('disorders')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <!-- 特徴タグ -->
         <label class="block font-medium mt-6">特徴タグ</label>
         <div id="feature-display-area" class="tag-area border p-2 bg-gray-100 rounded mb-2"></div>
-        <input id="feature-input-field" value="{{ old('feature', $hospital->feature) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-3 py-2 rounded">
+        <input id="feature-input-field" value="{{ old('feature', $hospital->feature) }}" type="text" placeholder="タグをクリックしてください"  class="w-full tag-input border px-4 py-2 rounded">
         <input type="hidden" name="feature" value="{{ old('feature', $hospital->feature) }}" id="feature-hidden-input">
         <div id="feature-suggestions-data" style="display:none">@json($features)</div>
 
@@ -190,16 +182,16 @@
 
         <!-- その他情報 -->
         <label class="block font-medium mt-6">HP</label>
-        <input type="text" name="homepage_url" value="{{ old('homepage_url',$hospital->homepage_url) }}" class="w-full border px-3 py-2 rounded mt-1">
-        @error('homepage_url')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="homepage_url" value="{{ old('homepage_url',$hospital->homepage_url) }}" class="w-full border px-4 py-2 rounded mt-2">
+        @error('homepage_url')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <label class="block font-medium mt-4">地図URL</label>
-        <input type="text" name="map_url" value="{{ old('map_url',$hospital->map_url) }}" class="w-full border px-3 py-2 rounded mt-1">
-        @error('map_url')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="map_url" value="{{ old('map_url',$hospital->map_url) }}" class="w-full border px-4 py-2 rounded mt-2">
+        @error('map_url')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <label class="block font-medium mt-4">電話番号</label>
-        <input type="text" name="phone" value="{{ old('phone',$hospital->phone) }}" class="w-full border px-3 py-2 rounded mt-1">
-        @error('phone')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+        <input type="text" name="phone" value="{{ old('phone',$hospital->phone) }}" class="w-full border px-4 py-2 rounded mt-2">
+        @error('phone')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <div class="flex justify-between mt-6">
             <a href="{{ route('admin.hospitals.show', $hospital->id) }}" class="bg-orange-500 text-white px-6 py-2 rounded">{{ $hospital->name }}の詳細画面へ</a>
@@ -208,9 +200,9 @@
       </form>
     </div>
   </div>
-
-  <footer class="text-center py-4">
-    <a href="{{ route('admin.hospitals.index') }}" class="font-bold text-gray-800 hover:underline">精神科評価サイト</a>
-  </footer>
-  
+<footer class="bg-white text-center py-6">
+  <a href="{{ route('admin.hospitals.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
+    精神科評価サイト
+  </a>
+</footer>
 </x-app-layout>

@@ -1,5 +1,4 @@
 <x-app-layout>
-
   <!--　固定ヘッダー -->
   <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
     <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
@@ -18,7 +17,7 @@
     </video>
     <!-- 中央のテキスト -->
     <div class="relative z-10 flex flex-col items-center justify-start text-center px-4 py-24">
-      <p class="text-[40px] font-extrabold mb-2">あなたに合った精神科を</p>
+      <p class="text-[40px] font-extrabold mb-2 font-sans">あなたに合った精神科を</p>
       <h1 class="text-6xl font-extrabold mb-2">精神科評価サイト</h1>
       
     </div>
@@ -164,7 +163,7 @@
 
 
 <div class="bg-brand-100 bg-opacity-30 py-10 flex justify-center">
-  {{ $hospitals->links('vendor.pagination.tailwind') }}
+  {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
 </div>
   
 <footer class="bg-white text-center py-6">

@@ -1,13 +1,12 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <a href="{{ route('admin.hospitals.index') }}" class="text-xl font-bold text-gray-800 hover:underline">精神科評価サイト</a>
-            <form method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-                <button type="submit" class="text-xl font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
-            </form>
-        </div>
-    </x-slot>
+    <!--　固定ヘッダー -->
+    <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+        <a href="{{ route('admin.hospitals.index') }}" class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
+        <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <button type="submit" class="text-base font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
+        </form>
+    </div>
 
 <div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-400 bg-sky-500 bg-opacity-30 p-6 rounded-lg">
   <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -24,15 +23,15 @@
   </div>
 </div>
 
-    
-    <div class="bg-sky-500 bg-opacity-30 min-h-screen py-10 px-6">
+
+
+<div class="bg-sky-500 bg-opacity-30 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
-                    <div class="lg:w-1/2 space-y-6">
-
-                        <!--編集・削除ボタン-->
+                    <div class="lg:w-1/2 space-y-10">
+                         <!--編集・削除ボタン-->
                          <div class="flex gap-4">
                             <a href="{{ route('admin.hospitals.edit', $hospital->id) }}" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">✏ 編集</a>
                             <form method="POST" action="{{ route('admin.hospitals.destroy', $hospital->id) }}" onsubmit="return confirm('本当に削除しますか？');">
@@ -41,14 +40,13 @@
                                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">🗑 削除</button>
                             </form>
                         </div>
-
-                        <h1 class="text-2xl font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
+                        <h1 class="text-[32px] font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
                         <!--ダミー画像。画像のサイズを固定。はみ出た部分は表示しない。-->
-                        <div class="bg-gray-200 w-[500px] h-[300px] flex items-center justify-center mx-auto overflow-hidden rounded">
+                        <div class="bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
                             <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" class="object-cover w-full h-full"/>
                         </div>
                         <div>
-                            <p class="font-semibold mb-2 text-center">診療時間</p>
+                            <p class="text-2xl font-bold mb-4 text-center">診療時間</p>
                             <table class="table-auto w-[500px] text-center border border-gray-400 mx-auto">
                                 <thead class="bg-blue-100">
                                     <tr>
@@ -80,9 +78,9 @@
                         </div>
                     </div>
 
-                    <!-- 右側 -->
-                    <div class="lg:w-1/2 space-y-4 text-sm text-gray-700 mt-16">
-                        <p class="text-lg"><span class="text-lg font-semibold">病院名：</span>{{ $hospital->name }}</p>
+                    <!-- 右側。ここの箇所のみ8の倍数以外を使用しています。８の倍数だと大きすぎたり、小さすぎたりといい塩梅のサイズ感にならなかったためです。 -->
+                    <div class="lg:w-1/2 space-y-6 text-base text-gray-700 mt-16">
+                        <p class="text-lg"><span class="font-semibold text-lg">病院名：</span>{{ $hospital->name }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">所在地：</span>{{ $hospital->address }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">最寄駅：</span>{{ $hospital->station }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">電話番号：</span>{{ $hospital->phone }}</p>
@@ -104,11 +102,11 @@
             </div>
         </div>
     </div>
-    
-    <footer class="text-center py-4">
-        <a href="{{ route('admin.hospitals.index') }}" class="text-gray-800 font-bold hover:underline">
-            精神科評価サイト
-        </a>
+
+    <footer class="bg-white text-center py-6">
+    <a href="{{ route('admin.hospitals.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
+        精神科評価サイト
+    </a>
     </footer>
 </x-app-layout>
 

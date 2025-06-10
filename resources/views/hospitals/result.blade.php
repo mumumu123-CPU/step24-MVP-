@@ -91,7 +91,7 @@
 
 
 <div class="bg-brand-100 bg-opacity-30 py-10 flex justify-center">
-  {{ $hospitals->links('vendor.pagination.tailwind') }}
+  {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
 </div>
   
 <footer class="bg-white text-center py-6">

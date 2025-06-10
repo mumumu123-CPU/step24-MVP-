@@ -32,10 +32,10 @@
             <div class="bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
-                    <div class="lg:w-1/2 space-y-6">
+                    <div class="lg:w-1/2 space-y-10">
                         <h1 class="text-[32px] font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
                         <!--ダミー画像。画像のサイズを固定。はみ出た部分は表示しない。-->
-                        <div class="bg-gray-200 w-[500px] h-[300px] flex items-center justify-center mx-auto overflow-hidden rounded">
+                        <div class="bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
                             <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" class="object-cover w-full h-full"/>
                         </div>
                         <div>
@@ -72,7 +72,7 @@
                     </div>
 
                     <!-- 右側。ここの箇所のみ8の倍数以外を使用しています。８の倍数だと大きすぎたり、小さすぎたりといい塩梅のサイズ感にならなかったためです。 -->
-                    <div class="lg:w-1/2 space-y-4 text-sm text-gray-700 mt-16">
+                    <div class="lg:w-1/2 space-y-6 text-base text-gray-700 mt-16">
                         <p class="text-lg"><span class="font-semibold text-lg">病院名：</span>{{ $hospital->name }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">所在地：</span>{{ $hospital->address }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">最寄駅：</span>{{ $hospital->station }}</p>
