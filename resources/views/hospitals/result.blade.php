@@ -4,28 +4,44 @@
     <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
       精神科評価サイト
     </a>
-    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-700 font-bold hover:underline">
+    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
       管理者ログイン
     </a>
   </div>
 
-  <div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
+  <div class="py-32 text-center border-b border-gray-300 bg-brand-100 bg-opacity-30 rounded-lg">
+      <p class="text-[40px] text-gray-800 font-semibold">検索結果</p>
+  </div>
+
+
+
+<!--　ボツ？
+<div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
   <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
     
-    <!-- グラデーション背景 -->
+    
+    
     <div class="absolute right-[-1vw] top-[20%] w-[35vw] h-[25vw] bg-green-200 rounded-full blur-[120px] opacity-70 z-0"></div>
 
     <section class="relative min-h-[600px] flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row z-10">
-      <!-- content - start -->
+      
+      
       <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
         <p class="text-[40px] font-bold text-gray-800 tracking-wide">検索結果</p>
       </div>
+
+      
+      <div class="flex items-center justify-center xl:w-7/12">
+        <img src="{{ asset('assets/images/image6.png') }}" alt="検索を考える人物" class="w-full max-w-md h-auto object-contain" />
+      </div>
+
     </section>
   </div>
 </div>
+-->
 
 <section class="max-w-screen text-center py-12  py-12 px-4 bg-brand-100 bg-opacity-30 border-b border-gray-300 w-full">
-  <h2 class="text-[32px] font-bold text-gray-800 mb-4 mx-auto">病院を探す</h2>
+  <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
   <p class="text-base text-gray-600 mb-6">
     条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
   </p>
@@ -57,8 +73,8 @@
 <div class="bg-brand-100 bg-opacity-30 py-6 sm:py-8 lg:py-12">
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-   <div class="mb-6 text-center">
-      <h2 class="text-[32px] font-bold text-gray-800 lg:text-3xl mb-4">病院一覧</h2>
+   <div class="pb-12 text-center">
+      <h2 class="text-[32px] font-semibold text-gray-800 lg:text-3xl">病院一覧</h2>
       @if ($hospitals->isEmpty())
         <p class="text-red-500 font-bold">該当する病院は見つかりませんでした。</p>
       @endif
@@ -71,7 +87,7 @@
             <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" alt="{{ $hospital->name }}" class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
           </a>
           <div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ $hospital->name }}</h3>
+            <h3 class="text-2xl font-medium text-gray-800 mb-2">{{ $hospital->name }}</h3>
             <p class="text-base text-gray-600 mb-2"><strong>所在地：</strong>{{ $hospital->address }}</p>
             <p class="text-base text-gray-600 mb-2">
               <strong>診療時間：</strong>{{ $hospital->am_display }} {{ $hospital->pm_display }}

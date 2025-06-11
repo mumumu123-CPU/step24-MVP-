@@ -4,13 +4,13 @@
         <a href="{{ route('admin.hospitals.index') }}" class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
         <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
-            <button type="submit" class="text-base font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
+            <button type="submit" class="text-base font-bold text-gray-800 hover:underline">管理者ログアウト</button>
         </form>
     </div>
 
     <!--検索フォーム-->
-    <section class="max-w-screen text-center py-12  pt-24 px-4 bg-sky-500 bg-opacity-30 border-b border-gray-400 w-full">
-  <h2 class="text-3xl font-bold text-gray-800 mb-4 mx-auto">管理者画面</h2>
+    <section class="max-w-screen text-center py-12  pt-24 px-4 bg-sky-400 bg-opacity-30 border-b border-gray-400 w-full">
+  <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-auto">管理者画面</h2>
   <!--
   <p class="text-lg text-gray-600 mb-6">
     条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
@@ -43,14 +43,14 @@
 
 
 
-<!-- 特徴セクション全体を包むブルー背景 -->
-<div class="bg-sky-500 bg-opacity-30 pt-16 pb-6 px-4 border-b border-gray-300">
+<!-- 全体を包むブルー背景 -->
+<div class="bg-sky-400 bg-opacity-30 pt-16 pb-6 px-4 border-b border-gray-300">
   
   <!-- 白枠カード部分 -->
   <div class="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
 
            <div class="mb-6">
-            <a href="{{ route('admin.hospitals.create') }}" class="block bg-orange-400 text-white text-center py-2 rounded">病院を登録する</a>
+            <a href="{{ route('admin.hospitals.create') }}" class="block bg-orange-400 text-white text-center py-2 rounded hover:bg-orange-500">病院を登録する</a>
         </div>
     
 <div class="overflow-x-auto">
@@ -72,7 +72,7 @@
                 </td>
                 <td class="w-16 px-2 py-2">{{ $hospital->id }}</td>
                 <td class="px-4 py-2 text-base font-medium">
-                    <a href="{{ route('admin.hospitals.show', $hospital->id) }}" class="text-blue-600 underline">
+                    <a href="{{ route('admin.hospitals.show', $hospital->id) }}" class="hover:text-blue-600">
                         {{ $hospital->name }}
                     </a>
                 </td>
@@ -98,7 +98,7 @@
    
 </div>
 
-<div class="bg-sky-500 bg-opacity-30 py-10 flex justify-center">
+<div class="bg-sky-400 bg-opacity-30 py-10 flex justify-center">
   {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
 </div>
 

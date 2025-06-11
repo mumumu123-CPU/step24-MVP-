@@ -2,7 +2,7 @@
     <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
       精神科評価サイト
     </a>
-    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-700 font-bold hover:underline">
+    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
       管理者ログイン
     </a>
   </div>

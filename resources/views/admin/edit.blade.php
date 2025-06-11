@@ -4,13 +4,20 @@
         <a href="{{ route('admin.hospitals.index') }}" class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
         <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
-            <button type="submit" class="text-base font-bold text-gray-600 underline hover:text-blue-600">管理者ログアウト</button>
+            <button type="submit" class="text-base font-bold text-gray-800 hover:underline">管理者ログアウト</button>
         </form>
     </div>
 
 
-  <div class="bg-sky-500 bg-opacity-30 min-h-screen px-4 py-24">
+  <div class="bg-sky-400 bg-opacity-30 min-h-screen px-4 py-24">
     <div class="bg-white rounded-lg shadow-md max-w-2xl mx-auto p-6">
+        
+       @if (session('success'))
+    <div class="bg-green-100 text-green-800 border border-green-400 p-4 rounded mb-4 text-center">
+        {{ session('success') }}
+    </div>
+        @endif
+
       @if ($errors->any())
         <div class="bg-red-100 text-red-800 text-base p-4 mb-4 rounded">入力に誤りがあります。内容をご確認ください。</div>
       @endif
@@ -194,8 +201,8 @@
         @error('phone')<p class="text-red-600 text-base mt-2">{{ $message }}</p>@enderror
 
         <div class="flex justify-between mt-6">
-            <a href="{{ route('admin.hospitals.show', $hospital->id) }}" class="bg-orange-500 text-white px-6 py-2 rounded">{{ $hospital->name }}の詳細画面へ</a>
-          <button type="submit" class="bg-orange-500 text-white px-6 py-2 rounded">保存する</button>
+            <a href="{{ route('admin.hospitals.show', $hospital->id) }}" class="bg-orange-400 text-white px-6 py-2 rounded hover:bg-orange-500">{{ $hospital->name }}の詳細画面へ</a>
+            <button type="submit" class="bg-orange-400 text-white px-6 py-2 rounded hover:bg-orange-500">保存する</button>
         </div>
       </form>
     </div>

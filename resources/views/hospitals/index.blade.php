@@ -4,7 +4,7 @@
     <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
       精神科評価サイト
     </a>
-    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-700 font-bold hover:underline">
+    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
       管理者ログイン
     </a>
   </div>
@@ -17,8 +17,8 @@
     </video>
     <!-- 中央のテキスト -->
     <div class="relative z-10 flex flex-col items-center justify-start text-center px-4 py-24">
-      <p class="text-[40px] font-extrabold mb-2 font-sans">あなたに合った精神科を</p>
-      <h1 class="text-6xl font-extrabold mb-2">精神科評価サイト</h1>
+      <p class="text-[40px] font-bold mb-2 font-sans">あなたに合った精神科を</p>
+      <h1 class="text-6xl font-semibold mb-2">精神科評価サイト</h1>
       
     </div>
 
@@ -35,23 +35,23 @@
    <!-- 右：テキスト -->
     <div class="text-gray-800 space-y-7 leading-loose text-2xl">
 
-      <h2 class="text-[32px] font-bold tracking-wide">
+      <h2 class="text-[32px] font-semibold tracking-wide">
         精神的な不調を感じたとき、<br >
         「どの病院が自分に合うんだろう…？」<br>
         と悩む方は多いはず。
       </h2>
 
-      <p>
+      <p class="font-normal">
         このサイトは、専門外来・対象疾患・地域から、<br>
         あなたに合った精神科・心療内科をスムーズに探せる検索サービスです。
       </p>
 
-      <p>
+      <p class="font-normal">
         「どこに相談すればいいか分からない」<br>
         そんな不安を減らし、あなたが安心して一歩を踏み出せるようにサポートします。
       </p>
 
-      <p>
+      <p class="font-normal">
         口コミや診療時間など、<br>
         気になる情報もひと目で確認できます。
       </p>
@@ -66,7 +66,7 @@
   
   <!-- 白枠カード部分 -->
   <div class="bg-white rounded-lg shadow-lg p-8 max-w-7xl mx-auto">
-    <h3 class="text-[32px] font-bold text-gray-800 mb-6 text-center">このサイトの特徴</h3>
+    <h3 class="text-[32px] font-semibold text-gray-800 mb-6 text-center">このサイトの特徴</h3>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-700 text-center">
       
@@ -97,7 +97,7 @@
 
 
 <section class="max-w-screen text-center py-12  py-12 px-4 bg-brand-100 bg-opacity-30 border-b border-gray-300 w-full">
-  <h2 class="text-[32px] font-bold text-gray-800 mb-4 mx-auto">病院を探す</h2>
+  <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
   <p class="text-base text-gray-600 mb-6">
     条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
   </p>
@@ -129,8 +129,8 @@
 <div class="bg-brand-100 bg-opacity-30 py-6 sm:py-8 lg:py-12">
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-   <div class="mb-6 text-center">
-      <h2 class="text-[32px] font-bold text-gray-800 lg:text-3xl mb-4">病院一覧</h2>
+   <div class="pb-12 text-center">
+      <h2 class="text-[32px] font-semibold text-gray-800 lg:text-3xl">病院一覧</h2>
       @if ($hospitals->isEmpty())
         <p class="text-red-500 font-bold">該当する病院は見つかりませんでした。</p>
       @endif
@@ -139,11 +139,11 @@
     <div class="grid gap-x-4 gap-y-8 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-2 xl:grid-cols-3">
       @foreach ($hospitals as $hospital)
         <div>
-          <a href="{{ route('hospital.show', $hospital->id) }}" class="group relative mb-2 block h-64 overflow-hidden rounded-lg bg-gray-100 lg:mb-4">
+          <a href="{{ route('hospital.show', $hospital->id) }}" class="group relative mb-2 block h-64 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
             <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" alt="{{ $hospital->name }}" class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
           </a>
           <div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ $hospital->name }}</h3>
+            <h3 class="text-2xl font-medium text-gray-800 mb-2">{{ $hospital->name }}</h3>
             <p class="text-base text-gray-600 mb-2"><strong>所在地：</strong>{{ $hospital->address }}</p>
             <p class="text-base text-gray-600 mb-2">
               <strong>診療時間：</strong>{{ $hospital->am_display }} {{ $hospital->pm_display }}
@@ -160,7 +160,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="bg-brand-100 bg-opacity-30 py-10 flex justify-center">
   {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}

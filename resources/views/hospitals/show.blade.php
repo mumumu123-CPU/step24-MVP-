@@ -5,26 +5,32 @@
     <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
       精神科評価サイト
     </a>
-    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-700 font-bold hover:underline">
+    <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
       管理者ログイン
     </a>
   </div>
 
+
+<div class="py-32 text-center border-b border-gray-300 bg-brand-100 bg-opacity-30 rounded-lg">
+      <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
+</div>
+
+<!--
 <div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
   <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
     
-    <!-- グラデーション背景 -->
+    
     <div class="absolute right-[-1vw] top-[20%] w-[35vw] h-[25vw] bg-green-200 rounded-full blur-[120px] opacity-70 z-0"></div>
 
     <section class="relative min-h-[600px] flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row z-10">
-      <!-- content - start -->
+      
       <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
         <p class="text-[40px] font-bold text-gray-800 tracking-wide">病院の詳細情報</p>
       </div>
     </section>
   </div>
 </div>
-
+-->
 
 
     <div class="bg-brand-100 bg-opacity-30 min-h-screen py-10 px-6">
@@ -33,13 +39,13 @@
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
                     <div class="lg:w-1/2 space-y-10">
-                        <h1 class="text-[32px] font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
+                        <h1 class="text-[32px] font-semibold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
                         <!--ダミー画像。画像のサイズを固定。はみ出た部分は表示しない。-->
                         <div class="bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
                             <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" class="object-cover w-full h-full"/>
                         </div>
                         <div>
-                            <p class="text-2xl font-bold mb-4 text-center">診療時間</p>
+                            <p class="text-2xl font-semibold mb-4 text-center">診療時間</p>
                             <table class="table-auto w-[500px] text-center border border-gray-400 mx-auto">
                                 <thead class="bg-blue-100">
                                     <tr>

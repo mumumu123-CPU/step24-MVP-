@@ -43,6 +43,13 @@ export default {
                 'sky-700' : '#2477BF',
                 'aqua-400 ' : '#41CAD9',
 
+                //　グラデーション用
+                'lime-50' : '#F2F2F2',
+                'lime-100' : '#EAF2AC',
+                'lime-200' : '#E2F263',
+                'lime-300' : '#C7F26B',
+                'lime-400' : '#A8D977',
+
             },
         },
     },
