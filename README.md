@@ -1,61 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+##　概要
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+このアプリは、精神科の受診を検討している方が、自分に合った医療機関を検索・比較できることを目的としたWebアプリケーションです。
 
-## About Laravel
+精神科医療の多くは予約制であり、医療機関ごとに得意とする分野や対象疾患が異なります。
+作成者自身が実際に精神科病院で勤務してきた経験から、「精神科に特化した情報を一元的に整理し、患者さんがスムーズに受診先を検討できるサービスが必要ではないか」と感じ、このアプリを開発しました。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+現在はMVP（Minimum Viable Product）開発段階が完了しており、病院情報はダミーデータで構成されています。
+今後はポートフォリオ用途に向けて、実在する医療機関の情報を反映する予定です。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##　スクリーンショット
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+###　トップページ
+![トップページ](docs/top.png)
+![トップページ2](docs/top2.png)
+![トップページ3](docs/top3.png)
 
-## Learning Laravel
+###　検索機能
+![検索機能](docs/search.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+###　検索結果
+![検索結果](docs/result.png)
+![検索結果2](docs/result2.png)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+###　詳細画面
+![詳細画面](docs/detail.png)
+![詳細画面2](docs/detail2.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+###　ログイン画面
+![ログイン](docs/login.png)
 
-## Laravel Sponsors
+###　管理画面
+![管理画面](docs/admin.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+###　管理画面(病院新規登録)
+![管理画面（病院新規登録）](docs/admin_create.png)
 
-### Premium Partners
+###　管理画面（詳細画面）
+![管理画面（詳細画面）](docs/admin_detail.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+###　管理画面（編集画面）
+![管理画面（編集画面）](docs/admin_edit.png)
 
-## Contributing
+##　主な機能
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+###　①病院検索機能(ユーザーは専門外来、疾患、都道府県から探せます)
+![管理画面（編集画面）](docs/search2.png)
 
-## Code of Conduct
+###　②病院の口コミが見れます。
+![詳細画面2](docs/detail2.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+###　管理者画面から病院の登録、編集、削除ができます。
+![管理画面](docs/admin.png)
 
-## Security Vulnerabilities
+##　使用技術
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+###　バックエンド
+・　PHP 8.2
+・　Laravel 12（Sail環境、Breezeによる認証機能）
+・　Composer（PHPパッケージ管理）
 
-## License
+###　フロントエンド
+・　HTML5
+・　Blade（Laravel標準のテンプレートエンジン）
+・　Tailwind CSS（ユーティリティファーストCSSフレームワーク）
+・　JavaScript（ES6+）
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+###　データベース
+・　PostgreSQL
+・　Laravelのマイグレーション／Seeder／Factoryを活用し、ダミーデータ生成を実施
+
+##　開発環境
+・　Docker / Laravel Sail
+・　Git / GitHub
+
+##　その他
+・　本アプリは現在ローカル環境（Laravel Sail + PostgreSQL）にて開発・動作確認を行っており、今後ポートフォリオとして外部公開するために、デプロイ環境の整備を予定しています。
+・　表示されている病院の画像は、あくまでテスト用途であり、以下のような一時的なダミー画像サービスを利用しています
+<img src="https://picsum.photos/seed/sample123/600/400" alt="ダミー画像">
+そのため、画像の読み込みに時間がかかる場合があります。
+また、表示されないこともありますが、その場合はページをリロード（再読み込み）していただくことで改善されます。
+ポートフォリオでは実際の病院の画像に差し替える予定です。
+
+##　ER図
+![ER図](docs/er.png)
