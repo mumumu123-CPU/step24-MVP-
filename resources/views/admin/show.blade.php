@@ -1,7 +1,8 @@
 <x-app-layout>
     <!--　固定ヘッダー -->
     <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
-        <a href="{{ route('admin.hospitals.index') }}" class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
+        <a href="{{ route('admin.hospitals.index') }}"
+            class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
         <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
             <button type="submit" class="text-base font-bold text-gray-800 hover:underline">管理者ログアウト</button>
@@ -10,29 +11,36 @@
 
 
     <div class="py-32 text-center border-b border-gray-400 bg-sky-400 bg-opacity-30 rounded-lg">
-      <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
+        <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
     </div>
 
 
-<div class="bg-sky-400 bg-opacity-30 min-h-screen py-10 px-6">
+    <div class="bg-sky-400 bg-opacity-30 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
                     <div class="lg:w-1/2 space-y-10">
-                         <!--編集・削除ボタン-->
-                         <div class="flex gap-4">
-                            <a href="{{ route('admin.hospitals.edit', $hospital->id) }}" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">✏ 編集</a>
-                            <form method="POST" action="{{ route('admin.hospitals.destroy', $hospital->id) }}" onsubmit="return confirm('本当に削除しますか？');">
+                        <!--編集・削除ボタン-->
+                        <div class="flex gap-4">
+                            <a href="{{ route('admin.hospitals.edit', $hospital->id) }}"
+                                class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">✏
+                                編集</a>
+                            <form method="POST" action="{{ route('admin.hospitals.destroy', $hospital->id) }}"
+                                onsubmit="return confirm('本当に削除しますか？');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">🗑 削除</button>
+                                <button type="submit"
+                                    class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">🗑
+                                    削除</button>
                             </form>
                         </div>
                         <h1 class="text-[32px] font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
                         <!--ダミー画像。画像のサイズを固定。はみ出た部分は表示しない。-->
-                        <div class="bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
-                            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}" class="object-cover w-full h-full"/>
+                        <div
+                            class="bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
+                            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}"
+                                class="object-cover w-full h-full" />
                         </div>
                         <div>
                             <p class="text-2xl font-bold mb-4 text-center">診療時間</p>
@@ -40,7 +48,7 @@
                                 <thead class="bg-blue-100">
                                     <tr>
                                         <th></th>
-                                        @foreach (["月","火","水","木","金","土","日","祝"] as $day)
+                                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
                                             <th>{{ $day }}</th>
                                         @endforeach
                                     </tr>
@@ -48,13 +56,13 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ $hospital->am_open }}</td>
-                                        @foreach (["月","火","水","木","金","土","日","祝"] as $day)
+                                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
                                             <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
                                         @endforeach
                                     </tr>
                                     <tr>
                                         <td>{{ $hospital->pm_open }}</td>
-                                        @foreach (["月","火","水","木","金","土","日","祝"] as $day)
+                                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
                                             <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
                                         @endforeach
                                     </tr>
@@ -63,7 +71,10 @@
                         </div>
 
                         <div class="bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto">
-                            <iframe class="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7133.418955402901!2d139.76447358931546!3d35.68110313679508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1748863094072!5m2!1sja!2sjp" width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe class=""
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7133.418955402901!2d139.76447358931546!3d35.68110313679508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1748863094072!5m2!1sja!2sjp"
+                                width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
 
@@ -73,12 +84,20 @@
                         <p class="text-lg"><span class="font-semibold text-lg">所在地：</span>{{ $hospital->address }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">最寄駅：</span>{{ $hospital->station }}</p>
                         <p class="text-lg"><span class="font-semibold text-lg">電話番号：</span>{{ $hospital->phone }}</p>
-                        <p class="text-lg"><span class="font-semibold text-lg">HP：</span>{{ $hospital->homepage_url }}</p>
-                        <p class="text-lg"><span class="font-semibold text-lg">専門外来：</span>{{ $hospital->specialties->pluck('name')->join('、') }}</p>
-                        <p class="text-lg"><span class="font-semibold text-lg">対象疾患：</span>{{ $hospital->disorders->pluck('name')->join('、') }}</p>
-                        <p class="text-lg"><span class="font-semibold text-lg">治療法：</span>{{ $hospital->treatment }}</p>
+                        <p class="text-lg"><span class="font-semibold text-lg">HP：</span>{{ $hospital->homepage_url }}
+                        </p>
+                        <p class="text-lg"><span
+                                class="font-semibold text-lg">専門外来：</span>{{ $hospital->specialties->pluck('name')->join('、') }}
+                        </p>
+                        <p class="text-lg"><span
+                                class="font-semibold text-lg">対象疾患：</span>{{ $hospital->disorders->pluck('name')->join('、') }}
+                        </p>
+                        <p class="text-lg"><span class="font-semibold text-lg">治療法：</span>{{ $hospital->treatment }}
+                        </p>
                         <p class="text-lg"><span class="font-semibold text-lg">特徴：</span>{{ $hospital->feature }}</p>
-                        <p class="text-lg"><span class="font-semibold text-lg">口コミ平均：</span>★{{ number_format($hospital->reviews->avg('rating'), 1) }}（{{ $hospital->reviews->count() }}件）</p>
+                        <p class="text-lg"><span
+                                class="font-semibold text-lg">口コミ平均：</span>★{{ number_format($hospital->reviews->avg('rating'), 1) }}（{{ $hospital->reviews->count() }}件）
+                        </p>
 
                         @foreach ($hospital->reviews as $review)
                             <div class="bg-gray-100 border border-gray-300 p-2 rounded">
@@ -93,9 +112,9 @@
     </div>
 
     <footer class="bg-white text-center py-6">
-    <a href="{{ route('admin.hospitals.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
-        精神科評価サイト
-    </a>
+        <a href="{{ route('admin.hospitals.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
+            精神科評価サイト
+        </a>
     </footer>
 </x-app-layout>
 
@@ -182,21 +201,21 @@
                 <table border="1" cellspacing="0" cellpadding="5" style="border-collapse: collapse; text-align: center;">
                     <tr style="background-color: #e0f0ff;">
                         <th></th>
-                        @foreach (['月','火','水','木','金','土','日','祝'] as $day)
-                            <th>{{ $day }}</th>
-                        @endforeach
+                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
+<th>{{ $day }}</th>
+@endforeach
                     </tr>
                     <tr>
                         <td>{{ $hospital->am_open }}</td>
-                        @foreach (['月','火','水','木','金','土','日','祝'] as $day)
-                            <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-                        @endforeach
+                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
+<td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
+@endforeach
                     </tr>
                     <tr>
                         <td>{{ $hospital->pm_open }}</td>
-                        @foreach (['月','火','水','木','金','土','日','祝'] as $day)
-                            <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-                        @endforeach
+                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
+<td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
+@endforeach
                     </tr>
                 </table>
 
@@ -216,8 +235,8 @@
             <p><span class="label">口コミ平均：</span> ★{{ number_format($hospital->reviews->avg('rating'), 1) }}（{{ $hospital->reviews->count() }}件）</p>
 
             @foreach ($hospital->reviews as $review)
-                <div class="review">★{{ $review->rating }}<br>{{ $review->comment }}</div>
-            @endforeach
+<div class="review">★{{ $review->rating }}<br>{{ $review->comment }}</div>
+@endforeach
         </div>
     </div>
 </div>
