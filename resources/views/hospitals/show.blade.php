@@ -11,12 +11,12 @@
     </div>
 
 
-    <div class="py-32 text-center border-b border-gray-300 bg-brand-100 bg-opacity-30 rounded-lg">
+    <div class="py-32 text-center border-b border-gray-300 bg-brand-500 rounded-lg">
         <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
     </div>
 
     <!--
-<div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
+<div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-500 p-6 rounded-lg">
   <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
     
     
@@ -33,7 +33,7 @@
 -->
 
 
-    <div class="bg-brand-100 bg-opacity-30 min-h-screen py-10 px-6">
+    <div class="bg-brand-500 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">

@@ -21,7 +21,7 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <!--　背景色を設定　-->
-        <div class="min-h-[93%] flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-brand-100 bg-opacity-30">
+        <div class="min-h-[93%] flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-brand-500">
             <div>
                 <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />

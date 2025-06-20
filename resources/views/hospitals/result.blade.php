@@ -9,14 +9,14 @@
         </a>
     </div>
 
-    <div class="py-32 text-center border-b border-gray-300 bg-brand-100 bg-opacity-30 rounded-lg">
+    <div class="py-32 text-center border-b border-gray-300 bg-brand-500 rounded-lg">
         <p class="text-[40px] text-gray-800 font-semibold">検索結果</p>
     </div>
 
 
 
     <!--　ボツ？
-<div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-100 bg-opacity-30 p-6 rounded-lg">
+<div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-500 p-6 rounded-lg">
   <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
     
     
@@ -41,7 +41,7 @@
 -->
 
     <section
-        class="max-w-screen text-center py-12  py-12 px-4 bg-brand-100 bg-opacity-30 border-b border-gray-300 w-full">
+        class="max-w-screen text-center py-12  py-12 px-4 bg-brand-500 border-b border-gray-300 w-full">
         <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
         <p class="text-base text-gray-600 mb-6">
             条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
@@ -77,7 +77,7 @@
     </section>
 
 
-    <div class="bg-brand-100 bg-opacity-30 py-6 sm:py-8 lg:py-12">
+    <div class="bg-brand-500 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
             <div class="pb-12 text-center">
@@ -116,7 +116,7 @@
     </div>
 
 
-    <div class="bg-brand-100 bg-opacity-30 py-10 flex justify-center">
+    <div class="bg-brand-500 py-10 flex justify-center">
         {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
     </div>
 

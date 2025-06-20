@@ -9,7 +9,7 @@
         </form>
     </div>
 
-    <div class="bg-sky-400 bg-opacity-30 min-h-screen px-4 py-24">
+    <div class="bg-blue-soft-100 min-h-screen px-4 py-24">
 
         <div class="bg-white rounded-lg shadow-md max-w-2xl mx-auto p-6">
             @if (session('success'))

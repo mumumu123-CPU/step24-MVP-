@@ -10,12 +10,12 @@
     </div>
 
 
-    <div class="py-32 text-center border-b border-gray-400 bg-sky-400 bg-opacity-30 rounded-lg">
+    <div class="py-32 text-center border-b border-gray-400 bg-blue-soft-100 rounded-lg">
         <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
     </div>
 
 
-    <div class="bg-sky-400 bg-opacity-30 min-h-screen py-10 px-6">
+    <div class="bg-blue-soft-100 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
