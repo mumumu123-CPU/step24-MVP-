@@ -15,23 +15,6 @@
         <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
     </div>
 
-    <!--
-<div class="pb-6 sm:pb-8 lg:pb-12 border-b border-gray-300 bg-brand-500 p-6 rounded-lg">
-  <div class="relative mx-auto max-w-screen-2xl px-4 md:px-8">
-    
-    
-    <div class="absolute right-[-1vw] top-[20%] w-[35vw] h-[25vw] bg-green-200 rounded-full blur-[120px] opacity-70 z-0"></div>
-
-    <section class="relative min-h-[600px] flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row z-10">
-      
-      <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
-        <p class="text-[40px] font-bold text-gray-800 tracking-wide">病院の詳細情報</p>
-      </div>
-    </section>
-  </div>
-</div>
--->
-
 
     <div class="bg-brand-500 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">

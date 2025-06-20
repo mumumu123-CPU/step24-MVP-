@@ -23,7 +23,7 @@
 
     </section>
 
-    <div class="px-4 py-16 bg-brand-500 p-6 rounded-lg">
+    <div class="px-4 py-16 bg-brand-500 border-b border-white p-6 rounded-lg">
         <div
             class="grid grid-cols-1 md:grid-cols-2 gap-x-24 items-center md:items-start py-16 my-6 mx-auto max-w-screen-xl">
 
@@ -63,7 +63,7 @@
     </div>
 
     <!-- 特徴セクション全体を包むグリーン背景 -->
-    <div class="bg-brand-500 py-20 px-4 border-b border-gray-300">
+    <div class="bg-brand-500 py-20 px-4 border-b border-white">
 
         <!-- 白枠カード部分 -->
         <div class="bg-white rounded-lg shadow-lg p-8 max-w-7xl mx-auto">
@@ -98,7 +98,7 @@
 
 
     <section
-        class="max-w-screen text-center py-12  py-12 px-4 bg-brand-500 border-b border-gray-300 w-full">
+        class="max-w-screen text-center py-12  py-12 px-4 bg-brand-500 border-b border-white w-full">
         <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
         <p class="text-base text-gray-600 mb-6">
             条件を選んで、あなたに合った精神科・心療内科を検索しましょう。

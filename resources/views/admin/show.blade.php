@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="py-32 text-center border-b border-gray-400 bg-blue-soft-100 rounded-lg">
+    <div class="py-32 text-center border-b border-white bg-blue-soft-100 rounded-lg">
         <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
     </div>
 
