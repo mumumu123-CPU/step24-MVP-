@@ -11,14 +11,14 @@
     </div>
 
 
-    <div class="py-32 text-center border-b border-gray-300 bg-brand-500 rounded-lg">
-        <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
+    <div class="pt-28 pb-16 text-center border-b border-white bg-brand-500/50 rounded-lg">
+        <p class="text-[32px] text-gray-800 font-semibold">医療機関の詳細情報</p>
     </div>
 
 
-    <div class="bg-brand-500 min-h-screen py-10 px-6">
+    <div class="bg-brand-500/50 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="bg-transparent shadow rounded-lg p-6 mb-6">
+            <div class="bg-white bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
                     <div class="lg:w-1/2 space-y-10">
@@ -103,11 +103,44 @@
         </div>
     </div>
 
-    <footer class="bg-white text-center py-6">
+    <footer class="bg-white py-16">
+  <div class="max-w-3xl mx-auto text-center px-6">
+
+    <!-- キャッチコピー -->
+    <h2 class="text-2xl font-bold mb-2">あなたに合った精神科を</h2>
+    <p class="text-base mb-6">
+      精神科評価サイトは、全国の医療機関を比較しながら、<br>
+      自分に合った病院を見つけられるサービスです。
+    </p>
+
+    <!-- このサイトについて -->
+    <div class="text-base mb-10 leading-relaxed">
+      <p>本サービスは、精神科を受診しようと考えている方が</p>
+      <p>病院の特徴や雰囲気をあらかじめ知ることで、</p>
+      <p>自分に合った医療機関を選ぶ手助けを目的としています。</p>
+    </div>
+
+   <div class="flex flex-wrap justify-center gap-6 text-base my-10">
+  <a href="#features" class="hover:underline">特徴</a>
+  <a href="#search" class="hover:underline">病院検索</a>
+  <a href="#" class="hover:underline">プライバシーポリシー</a>
+  <a href="#" class="hover:underline">利用規約</a>
+</div>
+
+    <!-- 注意事項 -->
+    <div class="text-base mt-10 border-t border-gray-700 pt-4">
+      <p class="mt-1 text-red-400">✳︎本サイトはポートフォリオ提出を目的として制作されたものであり、<br>
+        掲載されている病院情報はすべて架空のデータです。
+    </div>
+
+  </div>
+</footer>
+    
+    <div class="bg-brand-500/50 text-center py-6">
         <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
             精神科評価サイト
         </a>
-    </footer>
+    </div>
 
     </footer>
 </x-app-layout>

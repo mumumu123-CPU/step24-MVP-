@@ -23,7 +23,7 @@
 
     </section>
 
-    <div class="px-4 py-16 bg-brand-500 border-b border-white p-6 rounded-lg">
+    <div class="px-4 py-16 bg-brand-500/50 border-b border-white p-6 rounded-lg">
         <div
             class="grid grid-cols-1 md:grid-cols-2 gap-x-24 items-center md:items-start py-16 my-6 mx-auto max-w-screen-xl">
 
@@ -63,7 +63,7 @@
     </div>
 
     <!-- 特徴セクション全体を包むグリーン背景 -->
-    <div class="bg-brand-500 py-20 px-4 border-b border-white">
+    <div id="features" class="bg-white py-20 px-4 border-b border-white">
 
         <!-- 白枠カード部分 -->
         <div class="bg-white rounded-lg shadow-lg p-8 max-w-7xl mx-auto">
@@ -97,8 +97,7 @@
     </div>
 
 
-    <section
-        class="max-w-screen text-center py-12  py-12 px-4 bg-brand-500 border-b border-white w-full">
+    <section id="search" class="max-w-screen text-center py-12  py-12 px-4 bg-brand-500/50 border-b border-white w-full">
         <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
         <p class="text-base text-gray-600 mb-6">
             条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
@@ -134,7 +133,7 @@
     </section>
 
 
-    <div class="bg-brand-500 py-6 sm:py-8 lg:py-12">
+    <div class="bg-brand-500/50 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
             <div class="pb-12 text-center">
@@ -172,11 +171,45 @@
         </div>
     </div>
 
-    <div class="bg-brand-500 py-10 flex justify-center">
+    <div class="bg-brand-500/50 py-10 flex justify-center">
         {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
     </div>
 
-    <footer class="bg-white text-center py-6">
+
+<section class="bg-white py-16">
+  <div class="max-w-3xl mx-auto text-center px-6">
+
+    <!-- キャッチコピー -->
+    <h2 class="text-2xl font-bold mb-2">あなたに合った精神科を</h2>
+    <p class="text-base mb-6">
+      精神科評価サイトは、全国の医療機関を比較しながら、<br>
+      自分に合った病院を見つけられるサービスです。
+    </p>
+
+    <!-- このサイトについて -->
+    <div class="text-base mb-10 leading-relaxed">
+      <p>本サービスは、精神科を受診しようと考えている方が</p>
+      <p>病院の特徴や雰囲気をあらかじめ知ることで、</p>
+      <p>自分に合った医療機関を選ぶ手助けを目的としています。</p>
+    </div>
+
+   <div class="flex flex-wrap justify-center gap-6 text-base my-10">
+  <a href="#features" class="hover:underline">特徴</a>
+  <a href="#search" class="hover:underline">病院検索</a>
+  <a href="#" class="hover:underline">プライバシーポリシー</a>
+  <a href="#" class="hover:underline">利用規約</a>
+</div>
+
+    <!-- 注意事項 -->
+    <div class="text-base mt-10 border-t border-gray-700 pt-4">
+      <p class="mt-1 text-red-400">✳︎本サイトはポートフォリオ提出を目的として制作されたものであり、<br>
+        掲載されている病院情報はすべて架空のデータです。
+    </div>
+
+  </div>
+</section>
+    
+    <footer class="bg-brand-500/50 text-center py-6">
         <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
             精神科評価サイト
         </a>
@@ -186,29 +219,3 @@
 
 
 
-<!--病院情報を表示する
-@if ($hospitals->isEmpty())
-<p class="text-red-500 font-bold mb-6">該当する病院は見つかりませんでした。</p>
-@endif
-
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  @foreach ($hospitals as $hospital)
-<div class="bg-white rounded shadow p-4">
-      <h3 class="text-lg font-bold mb-1">{{ $hospital->name }}</h3>
-        <p class="text-sm text-gray-700 mb-1"><strong>所在地：</strong>{{ $hospital->address }}</p>
-        <p class="text-sm text-gray-700 mb-1">
-          <strong>診療時間：</strong>
-          {{ $hospital->am_display }}
-          {{ $hospital->pm_display }}
-        </p>
-        <p class="text-sm text-gray-700 mb-2">
-          <strong>対象疾患：</strong>
-          @foreach ($hospital->disorders as $disorder)
-{{ $disorder->name }}{{ !$loop->last ? '、' : '' }}
-@endforeach
-        </p>
-        <a href="{{ route('hospital.show', $hospital->id) }}" class="inline-block bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 text-sm">詳細はこちら</a>
-    </div>
-@endforeach
-</div>
--->

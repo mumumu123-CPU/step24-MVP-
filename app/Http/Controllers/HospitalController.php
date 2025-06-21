@@ -58,6 +58,9 @@ class HospitalController extends Controller
             });
         }
 
+        // 検索結果の件数を取得
+        $resultCount = $query->count();
+
         // データ取得。->paginate(20); にはget()の進化系
         $hospitals = $query->paginate(21); 
 
@@ -77,7 +80,7 @@ class HospitalController extends Controller
         $disorders = Disorder::all();
         $specialties = Specialty::all();
         // ビューで使用するためにcompact()で加工？
-        return view('hospitals.result', compact('hospitals', 'prefectures', 'disorders', 'specialties'));
+        return view('hospitals.result', compact('hospitals', 'prefectures', 'disorders', 'specialties','resultCount'));
     }
 
     public function show($id) {

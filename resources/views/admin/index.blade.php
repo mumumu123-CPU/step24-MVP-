@@ -10,7 +10,7 @@
     </div>
 
     <!--検索フォーム-->
-    <section class="max-w-screen text-center py-12  pt-24 px-4 bg-blue-soft-100  w-full">
+    <section class="max-w-screen text-center py-12  pt-24 px-4 bg-blue-soft-100/80  w-full">
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-auto">管理者画面</h2>
         <!--
   <p class="text-lg text-gray-600 mb-6">
@@ -50,7 +50,7 @@
 
 
     <!-- 全体を包むブルー背景 -->
-    <div class="bg-blue-soft-100 pt-16 pb-6 px-4">
+    <div class="bg-blue-soft-100/80 pt-16 pb-6 px-4">
 
         <!-- 白枠カード部分 -->
         <div class="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
@@ -106,7 +106,7 @@
 
     </div>
 
-    <div class="bg-blue-soft-100 py-10 flex justify-center">
+    <div class="bg-blue-soft-100/80 py-10 flex justify-center">
         {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
     </div>
 

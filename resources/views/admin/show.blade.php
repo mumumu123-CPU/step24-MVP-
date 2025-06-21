@@ -10,14 +10,14 @@
     </div>
 
 
-    <div class="py-32 text-center border-b border-white bg-blue-soft-100 rounded-lg">
+    <div class="py-32 text-center border-b border-white bg-blue-soft-100/80 rounded-lg">
         <p class="text-[40px] text-gray-800 font-semibold">病院の詳細情報</p>
     </div>
 
 
-    <div class="bg-blue-soft-100 min-h-screen py-10 px-6">
+    <div class="bg-blue-soft-100/80 min-h-screen py-10 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="bg-transparent shadow rounded-lg p-6 mb-6">
+            <div class="bg-white bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
                     <div class="lg:w-1/2 space-y-10">
@@ -54,18 +54,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>{{ $hospital->am_open }}</td>
-                                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-                                            <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-                                        @endforeach
-                                    </tr>
-                                    <tr>
-                                        <td>{{ $hospital->pm_open }}</td>
-                                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-                                            <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-                                        @endforeach
-                                    </tr>
+                                     @if (!empty($hospital->am_open))
+                                        <tr>
+                                            <td>{{ $hospital->am_open }}</td>
+                                            @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
+                                                <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
+                                            @endforeach
+                                        </tr>
+                                    @endif
+
+                                    @if (!empty($hospital->pm_open))
+                                        <tr>
+                                            <td>{{ $hospital->pm_open }}</td>
+                                            @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
+                                                <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
+                                            @endforeach
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -111,138 +116,43 @@
         </div>
     </div>
 
-    <footer class="bg-white text-center py-6">
+ <section class="bg-white py-16">
+  <div class="max-w-3xl mx-auto text-center px-6">
+
+    <!-- キャッチコピー -->
+    <h2 class="text-2xl font-bold mb-2">あなたに合った精神科を</h2>
+    <p class="text-base mb-6">
+      精神科評価サイトは、全国の医療機関を比較しながら、<br>
+      自分に合った病院を見つけられるサービスです。
+    </p>
+
+    <!-- このサイトについて -->
+    <div class="text-base mb-10 leading-relaxed">
+      <p>本サービスは、精神科を受診しようと考えている方が</p>
+      <p>病院の特徴や雰囲気をあらかじめ知ることで、</p>
+      <p>自分に合った医療機関を選ぶ手助けを目的としています。</p>
+    </div>
+
+   <div class="flex flex-wrap justify-center gap-6 text-base my-10">
+  <a href="#features" class="hover:underline">特徴</a>
+  <a href="#search" class="hover:underline">病院検索</a>
+  <a href="#" class="hover:underline">プライバシーポリシー</a>
+  <a href="#" class="hover:underline">利用規約</a>
+</div>
+
+    <!-- 注意事項 -->
+    <div class="text-base mt-10 border-t border-gray-700 pt-4">
+      <p class="mt-1 text-red-400">✳︎本サイトはポートフォリオ提出を目的として制作されたものであり、<br>
+        掲載されている病院情報はすべて架空のデータです。
+    </div>
+
+  </div>
+</section>
+    
+    <footer class="bg-blue-soft-100/80 text-center py-6">
         <a href="{{ route('admin.hospitals.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
             精神科評価サイト
         </a>
     </footer>
+
 </x-app-layout>
-
-<!--
-   <div class="flex gap-4">
-                            <a href="{{ route('admin.hospitals.edit', $hospital->id) }}" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">✏ 編集</a>
-                            <form method="POST" action="{{ route('admin.hospitals.destroy', $hospital->id) }}" onsubmit="return confirm('本当に削除しますか？');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">🗑 削除</button>
-                            </form>
-                        </div>
--->
-
-
-
-
-<!--
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>管理者用病院詳細ページ</title>
-    <style>
-        body { font-family: sans-serif; background: #e0edff; }
-        .header, .footer {
-            background: #b0d0ff; padding: 10px; text-align: center;
-            font-weight: bold;
-        }
-        .container {
-            width: 90%; max-width: 1000px; margin: 20px auto; background: #fff; padding: 20px;
-        }
-        h2 { text-align: center; background: #ddd; padding: 10px; margin-bottom: 20px; }
-        .info-section { display: flex; justify-content: space-between; }
-        .left, .right { width: 48%; }
-        .img-box, .map-box {
-            width: 100%; height: 150px; background: #eee; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 15px;
-        }
-        .btns { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        .btns a {
-            text-align: center; padding: 10px; border-radius: 4px; text-decoration: none;
-        }
-        .btn-edit { background: #ffd700; color: #000; }
-        .btn-delete {
-                background: #ff8080;
-                color: white;
-                padding: 10px;
-                border-radius: 4px;
-                text-align: center;
-                display: block;
-                text-decoration: none;
-                width: 100%;
-        }
-
-        .label { font-weight: bold; }
-        .review { background: #f6f6f6; margin: 5px 0; padding: 5px; border: 1px solid #ccc; }
-
-    </style>
-</head>
-<body>
-
-<div class="header">精神科評価サイト｜管理者ログアウト</div>
-
-<div class="container">
-    <h2>病院の詳細情報</h2>
-
-    <div class="btns">
-        <a href="{{ route('admin.hospitals.edit', $hospital->id) }}" class="btn-edit">✏️ 編集</a>
-        <form method="POST" action="{{ route('admin.hospitals.destroy', $hospital->id) }}"
-            onsubmit="return confirm('本当に削除しますか？');">
-          @csrf
-          @method('DELETE')
-          <button type="submit" class="btn-delete">🗑️ 削除</button>
-      </form>
-        </form>
-    </div>
-
-    <div class="info-section">
-        <div class="left">
-            <div class="img-box">病院の画像</div>
-
-            <div class="label">診療時間</div>
-                <table border="1" cellspacing="0" cellpadding="5" style="border-collapse: collapse; text-align: center;">
-                    <tr style="background-color: #e0f0ff;">
-                        <th></th>
-                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-<th>{{ $day }}</th>
-@endforeach
-                    </tr>
-                    <tr>
-                        <td>{{ $hospital->am_open }}</td>
-                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-<td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-@endforeach
-                    </tr>
-                    <tr>
-                        <td>{{ $hospital->pm_open }}</td>
-                        @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-<td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-@endforeach
-                    </tr>
-                </table>
-
-            <div class="map-box">地図</div>
-        </div>
-
-        <div class="right">
-            <p><span class="label">病院名：</span> {{ $hospital->name }}</p>
-            <p><span class="label">所在地：</span> {{ $hospital->address }}</p>
-            <p><span class="label">最寄駅：</span> {{ $hospital->station }}</p>
-            <p><span class="label">電話番号：</span> {{ $hospital->phone }}</p>
-            <p><span class="label">HP：</span> {{ $hospital->homepage_url }}</p>
-            <p><span class="label">専門外来：</span> {{ $hospital->specialties->pluck('name')->join('、') }}</p>
-            <p><span class="label">対象疾患：</span> {{ $hospital->disorders->pluck('name')->join('、') }}</p>
-            <p><span class="label">治療法：</span> {{ $hospital->treatment }}</p>
-            <p><span class="label">特徴：</span> {{ $hospital->feature }}</p>
-            <p><span class="label">口コミ平均：</span> ★{{ number_format($hospital->reviews->avg('rating'), 1) }}（{{ $hospital->reviews->count() }}件）</p>
-
-            @foreach ($hospital->reviews as $review)
-<div class="review">★{{ $review->rating }}<br>{{ $review->comment }}</div>
-@endforeach
-        </div>
-    </div>
-</div>
-
-<div class="footer">精神科評価サイト</div>
-
-</body>
-</html>
--->
