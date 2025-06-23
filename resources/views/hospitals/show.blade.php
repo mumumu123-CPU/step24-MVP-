@@ -8,7 +8,7 @@
         </a>
     </div>
 
-
+{{--
     <div class="flex h-screen overflow-hidden overflow-y-scroll bg-brand-500/50">
         <!-- 左側：商品画像など -->
         <div class="w-1/2  sticky top-0 h-screen border-r relative">
@@ -97,10 +97,11 @@
 
         </div>
     </div>
+--}}
 
 
 
-    {{--
+    
     <div class="py-28 pb-14 text-center bg-brand-500/50 rounded-lg">
         <p class="text-[32px] text-gray-800 font-semibold">医療機関の詳細情報</p>
     </div>
@@ -190,7 +191,7 @@
             </div>
         </div>
     </div>
---}}
+
 
     <footer class="bg-white py-16">
         <div class="max-w-3xl mx-auto text-center px-6">
