@@ -248,9 +248,9 @@
 
                 <div class="flex justify-between mt-6">
                     <a href="{{ route('admin.hospitals.show', $hospital->id) }}"
-                        class="bg-orange-400 text-white px-6 py-2 rounded hover:bg-orange-500">{{ $hospital->name }}の詳細画面へ</a>
+                        class="bg-orange2-100 text-white px-6 py-2 rounded hover:bg-orange2-200">{{ $hospital->name }}の詳細画面へ</a>
                     <button type="submit"
-                        class="bg-orange-400 text-white px-6 py-2 rounded hover:bg-orange-500">保存する</button>
+                        class="bg-orange2-100 text-white px-6 py-2 rounded hover:bg-orange2-200">保存する</button>
                 </div>
             </form>
         </div>

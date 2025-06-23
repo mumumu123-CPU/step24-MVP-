@@ -237,7 +237,7 @@
 
                 <div class="text-center mt-6">
                     <button type="submit"
-                        class="bg-orange-400 text-white px-6 py-2 rounded hover:bg-orange-500">保存する</button>
+                        class="bg-orange2-100 text-white px-6 py-2 rounded hover:bg-orange2-200">保存する</button>
                 </div>
             </form>
         </div>
