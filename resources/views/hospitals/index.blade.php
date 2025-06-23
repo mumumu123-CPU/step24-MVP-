@@ -97,7 +97,7 @@
     </div>
 
 
-    <section id="search" class="max-w-screen text-center py-12  py-12 px-4 bg-brand-500/50 border-b border-white w-full">
+    <section id="search" class="max-w-screen text-center py-12  py-12 px-4 bg-white border-b border-white w-full">
         <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
         <p class="text-base text-gray-600 mb-6">
             条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
@@ -148,7 +148,7 @@
                     <div>
                         <a href="{{ route('hospital.show', $hospital->id) }}"
                             class="group relative mb-2 block h-64 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
-                            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}"
+                            <img src="{{ asset('assets/images2/' . $hospitalImages[$hospital->id]) }}"
                                 alt="{{ $hospital->name }}"
                                 class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
                         </a>
@@ -216,6 +216,3 @@
     </footer>
 
 </x-app-layout>
-
-
-
