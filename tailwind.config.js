@@ -39,6 +39,8 @@ export default {
                 //　管理者用メイン
                 'blue-soft-100' : '#63A1F2',
                 'blue-soft-200' : '#056CF2',
+                'orange2-100' : '#F29F05',
+                'orange2-200' : '#D96704',
 
                 //　管理者用補欠
                 'sky-500 ' : '#3D9DD9',
