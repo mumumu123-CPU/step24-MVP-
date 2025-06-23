@@ -36,10 +36,15 @@ class ReviewFactory extends Factory
             $sentiment === 'positive' ? $positiveComments[$lengthCategory] : $negativeComments[$lengthCategory]
         );
         $baseComment = $commentList->random();
+
+        // 口コミの評価とレートの内容を設定
+        $rating = $sentiment === 'positive' ?$this->faker->numberBetween(3,5) : $this->faker->numberBetween(1,2);
+
+
         return [
             'hospital_id' => rand(1, 50), // 病院ID（50個作ってるならOK）
             'comment' => $baseComment,
-            'rating' => $this->faker->numberBetween(1, 5), // 1〜5の評価。問題がある。コメントの評価は高いのにレートが低い、あるいは否定的なコメントなのに、レートは高評価。解決法→jsonファイルにコメントと一緒に連想配列でレートものせる。
+            'rating' => $rating,
         ];
         
         
