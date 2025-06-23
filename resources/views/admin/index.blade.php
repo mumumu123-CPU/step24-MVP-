@@ -50,14 +50,14 @@
 
 
     <!-- 全体を包むブルー背景 -->
-    <div class="bg-blue-soft-100/80 pt-16 pb-6 px-4">
+    <div class="bg-blue-soft-100/80 pt-8 pb-6 px-4">
 
         <!-- 白枠カード部分 -->
         <div class="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
 
             <div class="mb-6">
                 <a href="{{ route('admin.hospitals.create') }}"
-                    class="block bg-orange-400 text-white text-center py-2 rounded hover:bg-orange-500">病院を登録する</a>
+                    class="block bg-orange2-100 text-white text-center py-2 rounded hover:bg-orange2-200">病院を登録する</a>
             </div>
 
             <div class="overflow-x-auto">
