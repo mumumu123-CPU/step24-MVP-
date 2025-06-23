@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Hospital;
 use App\Models\Disorder;
 use App\Models\Specialty;
+use Illuminate\Support\Facades\File;
 
 class HospitalController extends Controller
 {   // 検索フォームで大阪と入力→GET方式でLaravelにデータが飛ぶ→それを$requestが引き受ける→大元のRequestは母体→母体に引き受けさせたら、毎回母体を作り直さないといけない→だから、子であるインスタンスに引き受けさせる
@@ -31,8 +32,21 @@ class HospitalController extends Controller
         $prefectures = json_decode(file_get_contents(storage_path('app/json/prefectures.json')), true);
         $disorders = Disorder::all();
         $specialties = Specialty::all();
+
+         //　画像ファイル取得
+        $images = File::files(public_path('assets/images2'));
+
+        //　ランダムに１つ取得
+          foreach ($hospitals as $index => $hospital) {
+        // 画像数以上に病院がある場合はループしないようチェック
+        if (!isset($images[$index])) break;
+
+        $hospitalImages[$hospital->id] = $images[$index]->getFilename();
+    }
+        
+
         // ビューで使用するためにcompact()で加工？
-        return view('hospitals.index', compact('hospitals', 'prefectures', 'disorders', 'specialties'));
+        return view('hospitals.index', compact('hospitals', 'prefectures', 'disorders', 'specialties','hospitalImages'));
     }
 
     public function resultView(Request $request) //　触らない
@@ -85,7 +99,13 @@ class HospitalController extends Controller
 
     public function show($id) {
         $hospital = Hospital::with(['reviews','disorders','specialties'])->findOrFail($id);
-        return view('hospitals.show',compact('hospital'));
+
+        //　画像ファイル取得
+        $images = File::files(public_path('assets/images2'));
+
+        //　ランダムに１つ取得
+        $randomImage = $images[array_rand($images)]->getFilename();
+        return view('hospitals.show',compact('hospital','randomImage'));
     }
     
     
