@@ -67,7 +67,7 @@
                     <div>
                         <a href="{{ route('hospital.show', $hospital->id) }}"
                             class="group relative mb-2 block h-64 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
-                            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}"
+                            <img src="{{ asset('assets/images2/' . $hospitalImages[$hospital->id]) }}"
                                 alt="{{ $hospital->name }}"
                                 class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
                         </a>

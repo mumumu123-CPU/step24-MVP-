@@ -104,8 +104,18 @@ class HospitalController extends Controller
         $prefectures = json_decode(file_get_contents(storage_path('app/json/prefectures.json')), true);
         $disorders = Disorder::all();
         $specialties = Specialty::all();
+
+        //　画像ファイル取得
+        $images = File::files(public_path('assets/images2'));
+
+        $hospitalImages = [];
+        foreach ($hospitals as $hospital) {
+            $index = $hospital->id % count($images);
+            $hospitalImages[$hospital->id] = $images[$index]->getFilename();
+        }
+
         // ビューで使用するためにcompact()で加工？
-        return view('hospitals.result', compact('hospitals', 'prefectures', 'disorders', 'specialties','resultCount'));
+        return view('hospitals.result', compact('hospitals', 'prefectures', 'disorders', 'specialties','resultCount','hospitalImages'));
     }
 
     public function show($id) {
