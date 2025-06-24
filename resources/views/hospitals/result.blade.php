@@ -65,8 +65,9 @@
             <div class="grid gap-x-4 gap-y-8 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-2 xl:grid-cols-3">
                 @foreach ($hospitals as $hospital)
                     <div>
-                        <a href="{{ route('hospital.show', $hospital->id) }}"
-                            class="group relative mb-2 block h-64 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
+                        <a href="{{ route('hospital.show', $hospital->id) }}?from=research"
+                            class="group relative mb-2 block h-64 overflow-hidden rounded-lg bg-gray-100 lg:mb-3"
+                            onclick="sessionStorage.setItem('previous_page',window.location.href)">
                             <img src="{{ asset('assets/images2/' . $hospitalImages[$hospital->id]) }}"
                                 alt="{{ $hospital->name }}"
                                 class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />

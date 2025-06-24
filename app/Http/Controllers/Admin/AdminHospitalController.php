@@ -6,7 +6,8 @@ use App\Models\Hospital;
 use App\Models\Disorder;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller; // ← これ抜けてること多いので注意！
+use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\File;
 
 class AdminHospitalController extends Controller
 {
@@ -66,7 +67,15 @@ class AdminHospitalController extends Controller
                 $pmSlots[] = (in_array($day, $openDays) && !empty($hospital->pm_open)) ? '◯' : '−';
             }
 
-            return view('admin.show', compact('hospital', 'amSlots', 'pmSlots'));
+            //　画像ファイル取得
+        $images = File::files(public_path('assets/images2'));
+        // トップ画面と同じ画像になるように再度IDと画像の計算を行う
+        $imageIndex = $hospital->id % count($images);
+        $randomImage = $images[$imageIndex]->getFilename();
+
+        $from = request()->query('from');
+
+            return view('admin.show', compact('hospital', 'amSlots', 'pmSlots','randomImage'));
         }
 
         // 病院登録フォーム

@@ -127,11 +127,13 @@ class HospitalController extends Controller
         $imageIndex = $hospital->id % count($images);
         $randomImage = $images[$imageIndex]->getFilename();
 
+        $from = request()->query('from');
+
         /*
         //　ランダムに１つ取得
         $randomImage = $images[array_rand($images)]->getFilename();
         */
-        return view('hospitals.show',compact('hospital','randomImage'));
+        return view('hospitals.show',compact('hospital','randomImage','from'));
 
     }
     

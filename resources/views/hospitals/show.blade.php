@@ -8,7 +8,7 @@
         </a>
     </div>
 
-{{--
+    {{--
     <div class="flex h-screen overflow-hidden overflow-y-scroll bg-brand-500/50">
         <!-- 左側：商品画像など -->
         <div class="w-1/2  sticky top-0 h-screen border-r relative">
@@ -101,22 +101,24 @@
 
 
 
-    
+
     <div class="py-28 pb-14 text-center bg-brand-500/50 rounded-lg">
         <p class="text-[32px] text-gray-800 font-semibold">医療機関の詳細情報</p>
     </div>
 
-    <div class=" pb-24 bg-brand-500/50">
+    <div class="pb-20 bg-brand-500/50">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
                     <!-- 左側 -->
                     <div class="lg:w-1/2 space-y-10">
-                        
+
                         <h1 class="text-[32px] font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
                         <!--ダミー画像。画像のサイズを固定。はみ出た部分は表示しない。-->
-                        <div class="group bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
-                            <img src="{{asset('assets/images2/' . $randomImage)}}" class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
+                        <div
+                            class="group bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
+                            <img src="{{ asset('assets/images2/' . $randomImage) }}"
+                                class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
                         </div>
                         <div>
                             <p class="text-2xl font-bold mb-4 text-center">診療時間</p>
@@ -130,7 +132,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     @if (!empty($hospital->am_open))
+                                    @if (!empty($hospital->am_open))
                                         <tr>
                                             <td>{{ $hospital->am_open }}</td>
                                             @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
@@ -191,9 +193,31 @@
             </div>
         </div>
     </div>
+    <!--戻るボタン-->
+    <div class="bg-brand-500/50 pb-16 flex justify-center">
+        <button onclick="goBack()"
+            class="px-10 py-4 bg-white font-semibold rounded shadow hover:bg-gray-200 transition">
+            戻る
+        </button>
+    </div>
+    <script>
+        function goBack() {
+            const from = new URLSearchParams(window.location.search).get('from');
+            if (from === 'research') {
+                const prev = sessionStorage.getItem('previous_page');
+                if (prev) {
+                    window.location.href = prev;
+                } else {
+                    window.location.href = '/search';
+                }
+            } else {
+                window.location.href = '/';
+            }
+        }
+    </script>
 
 
-    <footer class="bg-white py-16">
+    <section class="bg-white py-16">
         <div class="max-w-3xl mx-auto text-center px-6">
 
             <!-- キャッチコピー -->
@@ -224,13 +248,13 @@
             </div>
 
         </div>
-    </footer>
+    </section>
 
-    <div class="bg-brand-500/50 text-center py-6">
+    <footer class="bg-brand-500/50 text-center py-6">
         <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
             精神科評価サイト
         </a>
-    </div>
+    </footer>
 
     </footer>
 </x-app-layout>

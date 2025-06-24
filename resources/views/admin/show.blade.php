@@ -15,7 +15,7 @@
     </div>
 
 
-    <div class="bg-blue-soft-100/80 pb-24">
+    <div class="bg-blue-soft-100/80 pb-20">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white bg-transparent shadow rounded-lg p-6 mb-6">
                 <div class="flex lg:flex-row gap-6">
@@ -38,9 +38,9 @@
                         <h1 class="text-[32px] font-bold text-center text-gray-800 my-6">{{ $hospital->name }}</h1>
                         <!--ダミー画像。画像のサイズを固定。はみ出た部分は表示しない。-->
                         <div
-                            class="bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
-                            <img src="https://picsum.photos/seed/{{ uniqid() }}/{{ rand(400, 800) }}/{{ rand(300, 600) }}"
-                                class="object-cover w-full h-full" />
+                            class="group bg-gray-200 w-[500px] h-[400px] flex items-center justify-center mx-auto overflow-hidden rounded">
+                            <img src="{{ asset('assets/images2/' . $randomImage) }}"
+                                class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
                         </div>
                         <div>
                             <p class="text-2xl font-bold mb-4 text-center">診療時間</p>
@@ -114,6 +114,12 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="bg-blue-soft-100/80 pb-16 flex justify-center">
+        <a href="{{ route('admin.hospitals.index') }}" class="px-10 py-4 bg-white font-semibold rounded shadow hover:bg-gray-200 transition">
+            戻る
+        </a>
     </div>
 
  <section class="bg-white py-16">
