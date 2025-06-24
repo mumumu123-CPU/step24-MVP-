@@ -133,7 +133,7 @@
     </section>
 
 
-    <div class="bg-brand-500/50 py-6 sm:py-8 lg:py-12">
+    <div id="hospital-list" class="bg-brand-500/50 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
             <div class="pb-12 text-center">
@@ -172,7 +172,7 @@
     </div>
 
     <div class="bg-brand-500/50 py-10 flex justify-center">
-        {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
+        {{ $hospitals->appends(request()->query())->fragment('hospital-list')->links('vendor.pagination.tailwind') }}
     </div>
 
 
