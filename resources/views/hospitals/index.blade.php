@@ -104,7 +104,7 @@
         </p>
         <form method="GET" action="{{ route('hospital.result') }}"
             class="border-none p-4 flex flex-wrap justify-center gap-4 mb-6">
-            <select name="specialty_id" class="border rounded px-4 py-2">
+            <select name="specialty_id" class="border rounded px-4 py-2 cursor-pointer">
                 <option value="">専門外来</option>
                 @foreach ($specialties as $specialty)
                     <option value="{{ $specialty->id }}"
@@ -112,7 +112,7 @@
                     </option>
                 @endforeach
             </select>
-            <select name="disorder_id" class="border rounded px-4 py-2">
+            <select name="disorder_id" class="border rounded px-4 py-2 cursor-pointer">
                 <option value="">疾患</option>
                 @foreach ($disorders as $disorder)
                     <option value="{{ $disorder->id }}" {{ request('disorder_id') == $disorder->id ? 'selected' : '' }}>
@@ -120,7 +120,7 @@
                 @endforeach
             </select>
 
-            <select name="prefecture" class="border rounded px-4 py-2 w-48">
+            <select name="prefecture" class="border rounded px-4 py-2 w-48 cursor-pointer">
                 <option value="">都道府県</option>
                 @foreach ($prefectures as $pref)
                     <option value="{{ $pref }}" {{ request('prefecture') == $pref ? 'selected' : '' }}>
