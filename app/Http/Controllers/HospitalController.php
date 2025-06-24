@@ -33,16 +33,27 @@ class HospitalController extends Controller
         $disorders = Disorder::all();
         $specialties = Specialty::all();
 
-         //　画像ファイル取得
+        //　画像ファイル取得
         $images = File::files(public_path('assets/images2'));
 
-        //　ランダムに１つ取得
+        $hospitalImages = [];
+        foreach ($hospitals as $hospital) {
+            $index = $hospital->id % count($images);
+            $hospitalImages[$hospital->id] = $images[$index]->getFilename();
+        }
+
+        /*画像の順番をシャッフルする
+        shuffle($images); 
+        */
+
+        /*　ランダムに１つ取得
           foreach ($hospitals as $index => $hospital) {
         // 画像数以上に病院がある場合はループしないようチェック
         if (!isset($images[$index])) break;
 
         $hospitalImages[$hospital->id] = $images[$index]->getFilename();
-    }
+        }
+        */
         
 
         // ビューで使用するためにcompact()で加工？
@@ -102,10 +113,16 @@ class HospitalController extends Controller
 
         //　画像ファイル取得
         $images = File::files(public_path('assets/images2'));
+        // トップ画面と同じ画像になるように再度IDと画像の計算を行う
+        $imageIndex = $hospital->id % count($images);
+        $randomImage = $images[$imageIndex]->getFilename();
 
+        /*
         //　ランダムに１つ取得
         $randomImage = $images[array_rand($images)]->getFilename();
+        */
         return view('hospitals.show',compact('hospital','randomImage'));
+
     }
     
     
