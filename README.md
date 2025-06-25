@@ -46,6 +46,10 @@
 ![管理者画面](docs/images2/admin5.png)
 ![管理者画面](docs/images2/admin4.png)
 
+```管理者アカウント```
+メールアドレス:test@test.com
+パスワード:testtest
+
 ## 使用技術
 
 ### バックエンド
