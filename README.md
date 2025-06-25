@@ -26,7 +26,7 @@
 ![詳細画面](docs/images2/detail1.png)
 ![詳細画面2](docs/images2/detail2.png)
 
-### ログイン画面
+### 管理者ログイン画面
 ![ログイン](docs/images2/login2.png)
 
 ### 管理者画面
