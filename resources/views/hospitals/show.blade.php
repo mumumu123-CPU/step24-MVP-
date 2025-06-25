@@ -1,106 +1,12 @@
 <x-app-layout>
-    <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+    <header class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
         <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
             精神科評価サイト
         </a>
         <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
             管理者ログイン
         </a>
-    </div>
-
-    {{--
-    <div class="flex h-screen overflow-hidden overflow-y-scroll bg-brand-500/50">
-        <!-- 左側：商品画像など -->
-        <div class="w-1/2  sticky top-0 h-screen border-r relative">
-            <!-- 病院名：画像の上に表示 -->
-            <div class="absolute top-14  px-4 py-2 rounded text-3xl font-bold z-10 w-full text-center">
-                {{ $hospital->name }}
-            </div>
-            <img src="{{ asset('assets/images2/' . $randomImage) }}" alt="ランダム画像" class="w-full h-full p-12 pb-20 pt-32" />
-        </div>
-
-        <!-- 右側：スクロールされる病院情報 -->
-        <div class="w-1/2 h-screen space-y-8 py-10">
-
-            <h1 class="text-3xl font-bold tracking-widest text-center pt-6">医療機関の詳細情報</h1>
-
-            <!-- ここの箇所のみ8の倍数以外を使用しています。８の倍数だと大きすぎたり、小さすぎたりといい塩梅のサイズ感にならなかったためです。 -->
-            <div class="space-y-6 text-base text-gray-700 px-32 pt-6">
-                <p class="text-lg"><span class="font-semibold text-lg">病院名：</span>{{ $hospital->name }}</p>
-
-                <p class="text-lg"><span class="font-semibold text-lg">所在地：</span>{{ $hospital->address }}</p>
-                <p class="text-lg"><span class="font-semibold text-lg">最寄駅：</span>{{ $hospital->station }}</p>
-                <div class="bg-gray-200 w-[500px] h-[400px]">
-                    <iframe class=""
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7133.418955402901!2d139.76447358931546!3d35.68110313679508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1748863094072!5m2!1sja!2sjp"
-                        width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-
-                <div>
-                    <p class="text-2xl font-semibold mb-4 text-center">診療時間</p>
-                    <table class="table-auto w-[500px] text-center border border-gray-400 mx-auto bg-white">
-                        <thead class="bg-blue-100">
-                            <tr>
-                                <th></th>
-                                @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-                                    <th>{{ $day }}</th>
-                                @endforeach
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (!empty($hospital->am_open))
-                                <tr>
-                                    <td>{{ $hospital->am_open }}</td>
-                                    @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-                                        <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-                                    @endforeach
-                                </tr>
-                            @endif
-
-                            @if (!empty($hospital->pm_open))
-                                <tr>
-                                    <td>{{ $hospital->pm_open }}</td>
-                                    @foreach (['月', '火', '水', '木', '金', '土', '日', '祝'] as $day)
-                                        <td>{{ str_contains($hospital->day_of_week, $day) ? '●' : '-' }}</td>
-                                    @endforeach
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-
-                <p class="text-lg"><span class="font-semibold text-lg">電話番号：</span>{{ $hospital->phone }}</p>
-                <p class="text-lg"><span class="font-semibold text-lg">HP：</span>{{ $hospital->homepage_url }}
-                </p>
-                <p class="text-lg"><span
-                        class="font-semibold text-lg">専門外来：</span>{{ $hospital->specialties->pluck('name')->join('、') }}
-                </p>
-                <p class="text-lg"><span
-                        class="font-semibold text-lg">対象疾患：</span>{{ $hospital->disorders->pluck('name')->join('、') }}
-                </p>
-                <p class="text-lg"><span class="font-semibold text-lg">治療法：</span>{{ $hospital->treatment }}
-                </p>
-                <p class="text-lg"><span class="font-semibold text-lg">特徴：</span>{{ $hospital->feature }}</p>
-                <p class="text-lg"><span
-                        class="font-semibold text-lg">口コミ平均：</span>★{{ number_format($hospital->reviews->avg('rating'), 1) }}（{{ $hospital->reviews->count() }}件）
-                </p>
-
-                @foreach ($hospital->reviews as $review)
-                    <div class="bg-gray-100 border border-gray-300 p-2 rounded bg-white">
-                        <p>★{{ $review->rating }}</p>
-                        <p>{{ $review->comment }}</p>
-                    </div>
-                @endforeach
-            </div>
-
-
-        </div>
-    </div>
---}}
-
-
-
+    </header>
 
     <div class="py-28 pb-14 text-center bg-brand-500/50 rounded-lg">
         <p class="text-[32px] text-gray-800 font-semibold">医療機関の詳細情報</p>

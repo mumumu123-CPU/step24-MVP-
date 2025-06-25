@@ -1,13 +1,13 @@
 <x-app-layout>
     <!--　固定ヘッダー -->
-    <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+    <header class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
         <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
             精神科評価サイト
         </a>
         <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
             管理者ログイン
         </a>
-    </div>
+    </header>
 
     <div class="pt-28 pb-16 text-center bg-brand-500/50 border-b border-white rounded-lg">
         <p class="text-[32px] text-gray-800 font-semibold">検索結果</p>

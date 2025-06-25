@@ -1,3 +1,12 @@
+<!--headerを追加-->
+<header class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+      <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
+          精神科評価サイト
+      </a>
+      <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
+          管理者ログイン
+      </a>
+  </header>
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
@@ -23,3 +32,9 @@
         </div>
     </form>
 </x-guest-layout>
+<!--footerを追加-->
+<footer class="bg-white text-center py-6 fixed bottom-0 z-50 w-full">
+      <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
+          精神科評価サイト
+      </a>
+  </footer

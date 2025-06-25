@@ -1,11 +1,11 @@
-  <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+  <header class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
       <a href="{{ route('hospital.index') }}" class="text-base text-gray-800 font-bold hover:underline">
           精神科評価サイト
       </a>
       <a href="{{ route('admin.login.form') }}" class="text-base text-gray-800 font-bold hover:underline">
           管理者ログイン
       </a>
-  </div>
+  </header>
   <x-guest-layout>
 
 
@@ -59,7 +59,7 @@
       </form>
   </x-guest-layout>
 
-  <footer class="bg-white text-center py-6">
+  <footer class="bg-white text-center py-6 fixed bottom-0 z-50 w-full">
       <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
           精神科評価サイト
       </a>

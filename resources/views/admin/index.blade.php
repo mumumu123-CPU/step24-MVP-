@@ -1,13 +1,13 @@
 <x-app-layout>
     <!--　固定ヘッダー -->
-    <div class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
+    <header class="w-full fixed top-0 left-0 z-50 px-8 py-4 bg-white shadow-md flex justify-between items-center">
         <a href="{{ route('admin.hospitals.index') }}"
             class="text-base font-bold text-gray-800 hover:underline">精神科評価サイト</a>
         <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
             <button type="submit" class="text-base font-bold text-gray-800 hover:underline">管理者ログアウト</button>
         </form>
-    </div>
+    </header>
 
     <!--検索フォーム-->
     <section class="max-w-screen text-center py-12  pt-24 px-4 bg-blue-soft-100/80  w-full">
