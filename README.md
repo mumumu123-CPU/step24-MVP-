@@ -71,4 +71,4 @@
 - 本アプリは現在ローカル環境（Laravel Sail + PostgreSQL）にて開発・動作確認を行っており、今後ポートフォリオとして外部公開するために、デプロイ環境の整備を予定しています。
 
 ## ER図
-![ER図](docs/er.png)
+![ER図](docs/images2/er.png)
