@@ -42,6 +42,9 @@
 
 ### ③ 管理者ログインにて医療機関の登録・編集・削除ができます
 ![管理者画面](docs/images2/admin1.png)
+![管理者画面2](docs/images2/admin6.png)
+![管理者画面](docs/images2/admin5.png)
+![管理者画面](docs/images2/admin4.png)
 
 ## 使用技術
 
