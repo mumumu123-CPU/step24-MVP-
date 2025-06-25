@@ -140,8 +140,8 @@
     </div>
 
    <div class="flex flex-wrap justify-center gap-6 text-base my-10">
-  <a href="#features" class="hover:underline">特徴</a>
-  <a href="#search" class="hover:underline">病院検索</a>
+  <a href="{{ route('hospital.index') }}#features" class="hover:underline">特徴</a>
+  <a href="{{ route('hospital.index') }}#search" class="hover:underline">病院検索</a>
   <a href="#" class="hover:underline">プライバシーポリシー</a>
   <a href="#" class="hover:underline">利用規約</a>
 </div>

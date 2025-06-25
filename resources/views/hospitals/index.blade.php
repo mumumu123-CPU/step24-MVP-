@@ -98,7 +98,7 @@
 
 
     <section id="search" class="max-w-screen text-center py-12  py-12 px-4 bg-white border-b border-white w-full">
-        <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
+        <h2 class="text-[32px] font-semibold text-gray-800 mb-4 pt-6 mx-auto">病院を探す</h2>
         <p class="text-base text-gray-600 mb-6">
             条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
         </p>
@@ -136,7 +136,7 @@
     <div id="hospital-list" class="bg-brand-500/50 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-            <div class="pb-12 text-center">
+            <div class="pb-12 pt-6 text-center">
                 <h2 class="text-[32px] font-semibold text-gray-800 lg:text-3xl">病院一覧</h2>
                 @if ($hospitals->isEmpty())
                     <p class="text-red-500 font-bold">該当する病院は見つかりませんでした。</p>
