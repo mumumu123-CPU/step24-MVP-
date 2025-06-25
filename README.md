@@ -1,4 +1,4 @@
-### 精神科評価サイト
+# 精神科評価サイト
 
 このアプリは、精神科の受診を検討している方が、自分に合った医療機関を検索・比較できることを目的としたWebアプリケーションです。
 
@@ -12,75 +12,60 @@
 ## スクリーンショット
 
 ### トップページ
-![トップページ](docs/top.png)
-![トップページ2](docs/top2.png)
-![トップページ3](docs/top3.png)
+![トップページ](docs/images2/top4.png)
+![トップページ2](docs/images2/top3.png)
+![トップページ3](docs/images2/top2.png)
 
-### 検索機能
-![検索機能](docs/search.png)
+### 検索画面
+![検索機能](docs/images2/search1.png)
 
 ### 検索結果
-![検索結果](docs/result.png)
-![検索結果2](docs/result2.png)
+![検索結果](docs/images2/result1.png)
 
 ### 詳細画面
-![詳細画面](docs/detail.png)
-![詳細画面2](docs/detail2.png)
+![詳細画面](docs/images2/detail1.png)
+![詳細画面2](docs/images2/detail2.png)
 
 ### ログイン画面
-![ログイン](docs/login.png)
+![ログイン](docs/images2/login2.png)
 
-### 管理画面
-![管理画面](docs/admin.png)
-
-### 管理画面(病院新規登録)
-![管理画面（病院新規登録）](docs/admin_create.png)
-
-### 管理画面（詳細画面）
-![管理画面（詳細画面）](docs/admin_detail.png)
-
-### 管理画面（編集画面）
-![管理画面（編集画面）](docs/admin_edit.png)
+### 管理者画面
+![管理画面](docs/images2/admin2.png)
 
 ## 主な機能
 
-### ①病院検索機能(ユーザーは専門外来、疾患、都道府県から探せます)
-![管理画面（編集画面）](docs/search2.png)
+### ① 病院検索機能(ユーザーは専門外来、疾患、都道府県から探せます)
+![検索機能](docs/images2/search2.png)
 
-### ②病院の口コミが見れます。
-![詳細画面2](docs/detail2.png)
+### ② 病院の口コミが見れます
+![詳細画面2](docs/images2/detail2.png)
 
-### 管理者画面から病院の登録、編集、削除ができます。
-![管理画面](docs/admin.png)
+### ③ 管理者ログインにて医療機関の登録・編集・削除ができます
+![管理者画面](docs/images2/admin1.png)
 
 ## 使用技術
 
 ### バックエンド
-・ PHP 8.2
-・ Laravel 12（Sail環境、Breezeによる認証機能）
-・ Composer（PHPパッケージ管理）
+- PHP 8.2
+- Laravel 12（Sail環境、Breezeによる認証機能）
+- Composer（PHPパッケージ管理）
 
 ### フロントエンド
-・ HTML5
-・ Blade（Laravel標準のテンプレートエンジン）
-・ Tailwind CSS（ユーティリティファーストCSSフレームワーク）
-・ JavaScript（ES6+）
+- HTML5
+- Blade（Laravel標準のテンプレートエンジン）
+- Tailwind CSS
+- JavaScript（ES6+）
 
 ### データベース
-・ PostgreSQL
-・ Laravelのマイグレーション／Seeder／Factoryを活用し、ダミーデータ生成を実施
+- PostgreSQL
+- Laravelのマイグレーション／Seeder／Factoryを活用し、ダミーデータ生成を実施
 
-## 開発環境
-・ Docker / Laravel Sail
-・ Git / GitHub
+### 開発環境
+- Docker / Laravel Sail
+- Git / GitHub
 
-## その他
-・ 本アプリは現在ローカル環境（Laravel Sail + PostgreSQL）にて開発・動作確認を行っており、今後ポートフォリオとして外部公開するために、デプロイ環境の整備を予定しています。
-・ 表示されている病院の画像は、あくまでテスト用途であり、以下のような一時的なダミー画像サービスを利用しています
-&lt;img src="https://picsum.photos/seed/sample123/600/400" alt="ダミー画像"&gt;
-そのため、画像の読み込みに時間がかかる場合があります。
-また、表示されないこともありますが、その場合はページをリロード（再読み込み）していただくことで改善されます。
-ポートフォリオでは実際の病院の画像に差し替える予定です。
+### その他
+- 本アプリは現在ローカル環境（Laravel Sail + PostgreSQL）にて開発・動作確認を行っており、今後ポートフォリオとして外部公開するために、デプロイ環境の整備を予定しています。
 
 ## ER図
 ![ER図](docs/er.png)
