@@ -47,8 +47,11 @@
 ![管理者画面](docs/images2/admin4.png)
 
 ```管理者アカウント```
-メールアドレス:test@test.com
-パスワード:testtest
+メールアドレス:admin@example.com
+パスワード:password
+
+## URL
+https://step24.fly.dev
 
 ## 使用技術
 
