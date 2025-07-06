@@ -11,7 +11,7 @@
     <div class="py-28 pb-14 text-center bg-brand-500/50 rounded-lg">
         <p class="text-[32px] text-gray-800 font-semibold">医療機関の詳細情報</p>
     </div>
-
+    <!--詳細情報-->
     <div class="pb-20 bg-brand-500/50">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white bg-transparent shadow rounded-lg p-6 mb-6">

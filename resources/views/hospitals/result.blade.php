@@ -8,13 +8,13 @@
             管理者ログイン
         </a>
     </header>
-
+    <!--検索結果-->
     <div class="pt-28 pb-16 text-center bg-brand-500/50 border-b border-white rounded-lg">
         <p class="text-[32px] text-gray-800 font-semibold">検索結果</p>
         <p class="text-base text-gray-600 py-2">{{ $resultCount }}件の医療機関が見つかりました。</p>
     </div>
 
-
+    <!--検索フォーム-->
     <section
         class="max-w-screen text-center py-12  py-12 px-4 bg-brand-500/50 border-b border-white w-full">
         <h2 class="text-[32px] font-semibold text-gray-800 mb-4 mx-auto">病院を探す</h2>
@@ -51,7 +51,7 @@
         </form>
     </section>
 
-
+    <!--病院一覧-->
     <div class="bg-brand-500/50 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
@@ -91,7 +91,7 @@
         </div>
     </div>
 
-
+    <!--ページネーション-->
     <div class="bg-brand-500/50 py-10 flex justify-center">
         {{ $hospitals->appends(request()->query())->links('vendor.pagination.tailwind') }}
     </div>
@@ -128,12 +128,10 @@
 
   </div>
 </footer>
-    
     <div class="bg-brand-500/50 text-center py-6">
         <a href="{{ route('hospital.index') }}" class="text-base tetext-gray-800 font-bold hover:underline">
             精神科評価サイト
         </a>
     </div>
-    
     </footer>
 </x-app-layout>

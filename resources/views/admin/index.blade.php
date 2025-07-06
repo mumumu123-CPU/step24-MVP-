@@ -12,11 +12,6 @@
     <!--検索フォーム-->
     <section class="max-w-screen text-center py-12  pt-24 px-4 bg-blue-soft-100/80  w-full">
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-auto">管理者画面</h2>
-        <!--
-  <p class="text-lg text-gray-600 mb-6">
-    条件を選んで、あなたに合った精神科・心療内科を検索しましょう。
-  </p>
-  -->
         <form method="GET" action="{{ route('admin.hospitals.index') }}"
             class="border-none p-4 flex flex-wrap justify-center gap-4 mb-6">
 
@@ -49,7 +44,7 @@
 
 
 
-    <!-- 全体を包むブルー背景 -->
+    <!-- 医療機関一覧 -->
     <div class="bg-blue-soft-100/80 pt-8 pb-6 px-4">
 
         <!-- 白枠カード部分 -->

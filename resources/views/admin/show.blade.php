@@ -14,7 +14,7 @@
         <p class="text-[32px] text-gray-800 font-semibold">医療機関の詳細情報</p>
     </div>
 
-
+    <!--詳細情報-->
     <div class="bg-blue-soft-100/80 pb-20">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white bg-transparent shadow rounded-lg p-6 mb-6">

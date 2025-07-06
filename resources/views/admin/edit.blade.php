@@ -12,16 +12,17 @@
 
     <div class="bg-blue-soft-100/80 min-h-screen px-4 py-24">
         <div class="bg-white rounded-lg shadow-md max-w-2xl mx-auto p-6">
-
+            <!--成功時のメッセージ-->
             @if (session('success'))
                 <div class="bg-green-100 text-green-800 border border-green-400 p-4 rounded mb-4 text-center">
                     {{ session('success') }}
                 </div>
             @endif
-
+            <!--エラー時のメッセージ-->
             @if ($errors->any())
                 <div class="bg-red-100 text-red-800 text-base p-4 mb-4 rounded">入力に誤りがあります。内容をご確認ください。</div>
             @endif
+            <!--編集フォーム-->
             <h2 class="text-xl font-bold text-center text-gray-800">病院情報編集フォーム</h2>
             <form method="POST" action="{{ route('admin.hospitals.update', $hospital->id) }}">
                 @csrf
@@ -145,7 +146,7 @@
                 <script>
                     // まずはページ全体が読み込まれてから実行されるようにする。
                     document.addEventListener("DOMContentLoaded", function() {
-                        // jsonからデータを取得する。　JSON .parseやtextContentが少々不明
+                        // jsonからデータを取得する。　
                         const treatmentSuggestions = JSON.parse(document.getElementById("treatment-suggestions-data")
                             .textContent);
                         const specialtiesSuggestions = JSON.parse(document.getElementById("specialties-suggestions-data")
@@ -198,7 +199,7 @@
 
                             // 表示エリアに表示された"tag"を全て取得
                             const allTags = displayArea.querySelectorAll(".tag");
-                            // そのtagを全て配列かして、、、処理内容不明。特にchildNodes[0].nodeValue.ここの部分。
+                            // そのtagを全て配列化
                             const names = Array.from(allTags).map(tag => {
                                 return tag.childNodes[0].nodeValue.trim();
                             });

@@ -12,19 +12,20 @@
     <div class="bg-blue-soft-100/80 min-h-screen px-4 py-24">
 
         <div class="bg-white rounded-lg shadow-md max-w-2xl mx-auto p-6">
+            <!--登録時のメッセージ-->
             @if (session('success'))
                 <div class="bg-green-100 text-green-800 border border-green-400 p-4 rounded mb-4 text-center">
                     {{ session('success') }}
                 </div>
             @endif
+            <!--エラー時のメッセージ-->
             @if ($errors->any())
                 <div class="bg-red-100 text-red-800 text-base p-4 mb-4 rounded">入力に誤りがあります。内容をご確認ください。</div>
             @endif
+            <!--登録フォーム-->
             <h2 class="text-xl font-bold text-center text-gray-800">病院情報入力フォーム</h2>
             <form method="POST" action="{{ route('admin.hospitals.store') }}">
                 @csrf
-
-
                 <!-- 病院名 -->
                 <label class="block font-medium">病院名</label>
                 <input type="text" name="name" value="{{ old('name') }}"
@@ -92,6 +93,9 @@
                     placeholder="タグをクリックしてください" class="w-full tag-input border px-4 py-2 rounded">
                 <input type="hidden" name="treatment" value="{{ old('treatment') }}" id="treatment-hidden-input">
                 <div id="treatment-suggestions-data" style="display:none">@json($treatments)</div>
+                @error('treatment')
+                    <p class="text-red-600 text-base mt-2">{{ $message }}</p>
+                @enderror
 
                 <!-- 専門分野 -->
                 <label class="block font-medium mt-6">専門分野</label>
@@ -123,6 +127,9 @@
                     placeholder="タグをクリックしてください" class="w-full tag-input border px-4 py-2 rounded">
                 <input type="hidden" name="feature" value="{{ old('feature') }}" id="feature-hidden-input">
                 <div id="feature-suggestions-data" style="display:none">@json($features)</div>
+                @error('feature')
+                    <p class="text-red-600 text-base mt-2">{{ $message }}</p>
+                @enderror
 
                 <script>
                     // まずはページ全体が読み込まれてから実行されるようにする。

@@ -18,11 +18,9 @@
         <div class="relative z-10 flex flex-col items-center justify-start text-center px-4 py-24">
             <p class="text-[40px] font-bold mb-2 font-sans">あなたに合った精神科を</p>
             <h1 class="text-6xl font-semibold mb-2">精神科評価サイト</h1>
-
         </div>
-
     </section>
-
+    <!--概要説明-->
     <div class="px-4 py-16 bg-brand-500/50 border-b border-white p-6 rounded-lg">
         <div
             class="grid grid-cols-1 md:grid-cols-2 gap-x-24 items-center md:items-start py-16 my-6 mx-auto max-w-screen-xl">
@@ -62,7 +60,7 @@
         </div>
     </div>
 
-    <!-- 特徴セクション全体を包むグリーン背景 -->
+    <!-- 特徴セクション -->
     <div id="features" class="bg-white py-20 px-4 border-b border-white">
 
         <!-- 白枠カード部分 -->
@@ -91,12 +89,11 @@
                     <h4 class="font-semibold text-xl mb-2">情報が豊富</h4>
                     <p class="text-base">診療時間や予約の有無など、必要な情報を一目で確認できます。</p>
                 </div>
-
             </div>
         </div>
     </div>
 
-
+    <!--検索フォーム-->
     <section id="search" class="max-w-screen text-center py-12  py-12 px-4 bg-white border-b border-white w-full">
         <h2 class="text-[32px] font-semibold text-gray-800 mb-4 pt-6 mx-auto">病院を探す</h2>
         <p class="text-base text-gray-600 mb-6">
@@ -132,7 +129,7 @@
         </form>
     </section>
 
-
+    <!--病院一覧-->
     <div id="hospital-list" class="bg-brand-500/50 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
@@ -170,7 +167,7 @@
             </div>
         </div>
     </div>
-
+    <!--病院一覧-->
     <div class="bg-brand-500/50 py-10 flex justify-center">
         {{ $hospitals->appends(request()->query())->fragment('hospital-list')->links('vendor.pagination.tailwind') }}
     </div>
