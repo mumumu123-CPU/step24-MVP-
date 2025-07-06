@@ -7,6 +7,8 @@ use Database\Seeders\HospitalSeeder;
 use Database\Seeders\DisorderHospitalSeeder;
 use Database\Seeders\SpecialtyHospitalSeeder;
 use Database\Seeders\ReviewSeeder;
+// use Database\Seeders\AdminSeeder;
+use Database\Seeders\UserSeeder;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 
@@ -21,6 +23,8 @@ class DatabaseSeeder extends Seeder
             SpecialtyHospitalSeeder::class,
             ReviewSeeder::class,
             HospitalDisorderSpecialtySeeder::class,
+            // AdminSeeder::class,
+            UserSeeder::class,
     ]);
     }
 }
