@@ -21,16 +21,18 @@ class AdminHospitalController extends Controller
     {
         $query = Hospital::with(['reviews', 'disorders', 'specialties']);
 
+        // 三軸検索
         if ($request->filled('prefecture')) {
+            // 都道府県
             $query->where('prefecture', $request->input('prefecture'));
         }
-
+            // 疾患
         if ($request->filled('disorder_id')) {
             $query->whereHas('disorders', function ($q) use ($request) {
                 $q->where('disorders.id', $request->input('disorder_id'));
             });
         }
-
+            // 専門分野
         if ($request->filled('specialty_id')) {
             $query->whereHas('specialties', function ($q) use ($request) {
                 $q->where('specialties.id', $request->input('specialty_id'));
@@ -40,8 +42,9 @@ class AdminHospitalController extends Controller
         $prefectures = json_decode(file_get_contents(storage_path('app/json/prefectures.json')), true);
         $disorders = Disorder::all();
         $specialties = Specialty::all();
-        $hospitals = $query->paginate(20); // 20件
-        // これでは、適切に検索できなかった、調べておく$hospitals = Hospital::with(['reviews', 'disorders', 'specialties'])
+        // １ページに20件表示させる
+        $hospitals = $query->paginate(20); 
+        
 
         
         // 表示するビューを指定
@@ -51,7 +54,7 @@ class AdminHospitalController extends Controller
         // 病院詳細
         public function show($id)
         {
-            //　病院の詳細データを表示する　findOrFaill()の意味。id探すけど、見つからなかったら即エラーを投げて止める
+            //　病院の詳細データを表示する　findOrFaill()の意味→id探すけど、見つからなかったら即エラーを投げて止める
             $hospital = Hospital::with(['disorders', 'specialties', 'reviews'])->findOrFail($id);
 
             //　診療曜日を表示する PREG_SPLIT_NO_EMPTYで空白は除外。$hospital->day_of_weekの中身（月火水等）を一文字ずつ分解して配列にする。曜日は月、火、水となって$openDaysに代入される
@@ -95,23 +98,23 @@ class AdminHospitalController extends Controller
             //  バリデーションルール
             $validated = $request->validate([
                 // 検索に必要なものだけ、空欄NGとする。{フィールド名}.{ルール名} => エラーメッセージ。
-                'name' => 'required|string|max:255', // 検索・表示に絶対いる
-                'prefecture' => 'required|string',   // 検索に絶対いる
-                'disorders' => 'required|string',    // 検索に必要
-                'specialties' => 'required|string',  // 必要
+                'name' => 'required|string|max:50', // 検索・表示に絶対いる
+                'prefecture' => 'required|string|max:50',   // 検索に絶対いる
+                'disorders' => 'required|string|max:50',    // 検索に必要
+                'specialties' => 'required|string|max:50',  // 必要
 
                 // エラーが出るので必須に
                 'address' => 'required|string|max:100',
 
                 'type' => 'nullable|string|in:hospital,clinic',
-                'homepage_url' => 'nullable|url',
-                'map_url' => 'nullable|url',
-                'station' => 'nullable|string',
+                'homepage_url' => 'nullable|url|max:100',
+                'map_url' => 'nullable|url|max:250',
+                'station' => 'nullable|string|max:50',
                 'day_of_week' => ['nullable', 'regex:/^[月火水木金土日祝祭]+$/u'],// 診療曜日は「月火水木金」のような形式でないと入力されないよう制限。アウトプット時に文字列をカンマで区切って配列にするため
-                'am_open' => ['nullable', 'regex:/^\d{2}:\d{2}〜\d{2}:\d{2}$/'],//  例: 08:30〜12:00
-                'pm_open' => ['nullable', 'regex:/^\d{2}:\d{2}〜\d{2}:\d{2}$/'],//中間テーブルに保存する際は、IDも必要だから配列nする？
-                'treatment' => 'nullable|string',            
-                'feature' => 'nullable|string',
+                'am_open' => ['nullable', 'regex:/^\d{2}:\d{2}~\d{2}:\d{2}$/'],//  例: 08:30〜12:00
+                'pm_open' => ['nullable', 'regex:/^\d{2}:\d{2}~\d{2}:\d{2}$/'],//中間テーブルに保存する際は、IDも必要だから配列nする？
+                'treatment' => 'nullable|string|max:50',            
+                'feature' => 'nullable|string|max:50',
                 'phone' => 'nullable|string|max:20',
                 
 
@@ -145,37 +148,7 @@ class AdminHospitalController extends Controller
 
             return redirect()->route('admin.hospitals.create')->with('success', '病院情報を登録しました');
             
-            /*
-            // 診療曜日は「月火水木金」のような形式でないと入力されないよう制限。アウトプット時に文字列をカンマで区切って配列にするため
-            $request->validate([
-                'day_of_week' => [
-                    'required',
-                    'regex:/^[月火水木金土日]+$/u',
-                ],
-            ], [
-                'day_of_week.regex' => '診療曜日は「月火水木金」のように入力してください（カンマや「曜」は不要です）',
-            ]);
-            
-
-            //　一旦、入力された情報は全て保存する、バリデーションは後で行う
-            $hospital = Hospital::create([
-                'name' => $request->input('name'),
-                'address' => $request->input('address'),
-                'type' => $request->input('type'), 
-                'homepage_url' => $request->input('homepage_url'), 
-                'map_url' => $request->input('map_url'),
-                'prefecture' => $request->input('prefecture'), 
-                'station' => $request->input('station'), 
-                'day_of_week' => $request->input('day_of_week'),
-                'am_open' => $request->input('am_open'), 
-                'pm_open' => $request->input('pm_open'), 
-                'treatment' => $request->input('treatment'), 
-                'feature' => $request->input('feature'),
-                'phone' => $request->input('phone'),
-            ]);
-
-            return redirect()->route('admin.hospitals.index')->with('success','病院情報を登録しました');
-            */
+           
             
         }
 
@@ -209,21 +182,21 @@ class AdminHospitalController extends Controller
             $hospital = Hospital::findOrFail($id);
 
             $validated = $request->validate([
-                'name' => 'required|string|max:255',
-                'prefecture' => 'required|string',
-                'disorders' => 'required|string',
-                'specialties' => 'required|string',
+                'name' => 'required|string|max:50', 
+                'prefecture' => 'required|string|max:50',   
+                'disorders' => 'required|string|max:50',    
+                'specialties' => 'required|string|max:50',  
                 'address' => 'required|string|max:100',
 
                 'type' => 'nullable|string|in:hospital,clinic',
-                'homepage_url' => 'nullable|url',
-                'map_url' => 'nullable|url',
-                'station' => 'nullable|string|max:255',
+                'homepage_url' => 'nullable|url|max:100',
+                'map_url' => 'nullable|url|max:250',
+                'station' => 'nullable|string|max:50',
                 'day_of_week' => ['nullable', 'regex:/^[月火水木金土日祝祭]+$/u'],
-                'am_open' => ['nullable', 'regex:/^\d{2}:\d{2}〜\d{2}:\d{2}$/'],
-                'pm_open' => ['nullable', 'regex:/^\d{2}:\d{2}〜\d{2}:\d{2}$/'],
-                'treatment' => 'nullable|string|max:255',
-                'feature' => 'nullable|string|max:255',
+                'am_open' => ['nullable', 'regex:/^\d{2}:\d{2}~\d{2}:\d{2}$/'],
+                'pm_open' => ['nullable', 'regex:/^\d{2}:\d{2}~\d{2}:\d{2}$/'],
+                'treatment' => 'nullable|string|max:50',            
+                'feature' => 'nullable|string|max:50',
                 'phone' => 'nullable|string|max:20',
             ], [ // エラーメッセージを作成
                 'name.required' => '病院名は必須項目です。',

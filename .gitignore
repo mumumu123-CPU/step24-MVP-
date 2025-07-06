@@ -22,4 +22,7 @@ yarn-error.log
 /.vscode
 /.zed
 
+# fly.toml
+fly.old.toml
+
 *.DS_Store
