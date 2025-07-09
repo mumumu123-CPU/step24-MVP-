@@ -1,10 +1,12 @@
 # 精神科評価サイト
 
 ## URL
+https://psychiatric-review-site.fly.dev
+
 ```管理者アカウント```
 メールアドレス:admin@example.com
 パスワード:password
-https://psychiatric-review-site.fly.dev
+
 
 このアプリは、精神科の受診を検討している方が、自分に合った医療機関を検索・比較できることを目的としたWebアプリケーションです。
 
