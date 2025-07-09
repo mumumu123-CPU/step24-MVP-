@@ -1,5 +1,11 @@
 # 精神科評価サイト
 
+## URL
+```管理者アカウント```
+メールアドレス:admin@example.com
+パスワード:password
+https://psychiatric-review-site.fly.dev
+
 このアプリは、精神科の受診を検討している方が、自分に合った医療機関を検索・比較できることを目的としたWebアプリケーションです。
 
 精神科医療の多くは予約制であり、医療機関ごとに得意とする分野や対象疾患が異なります。
@@ -15,7 +21,9 @@
 ![トップページ2](docs/images2/top3.png)
 ![トップページ3](docs/images2/top2.png)
 
-### 検索画面
+## 主な機能
+
+### ① 病院検索機能(ユーザーは専門外来、疾患、都道府県から探せます)
 ![検索機能](docs/images2/search1.png)
 
 ### 検索結果
@@ -25,32 +33,16 @@
 ![詳細画面](docs/images2/detail1.png)
 ![詳細画面2](docs/images2/detail2.png)
 
+### ② 管理者ログインにて医療機関の登録・編集・削除ができます
+
 ### 管理者ログイン画面
 ![ログイン](docs/images2/login2.png)
 
 ### 管理者画面
-![管理画面](docs/images2/admin2.png)
+![管理者画面](docs/images2/admin7.png)
+![管理者画面(詳細)](docs/images2/admin8.png)
+![管理者画面(新規登録)](docs/images2/admin9.png)
 
-## 主な機能
-
-### ① 病院検索機能(ユーザーは専門外来、疾患、都道府県から探せます)
-![検索機能](docs/images2/search2.png)
-
-### ② 病院の口コミが見れます
-![詳細画面2](docs/images2/detail2.png)
-
-### ③ 管理者ログインにて医療機関の登録・編集・削除ができます
-![管理者画面](docs/images2/admin1.png)
-![管理者画面2](docs/images2/admin6.png)
-![管理者画面](docs/images2/admin5.png)
-![管理者画面](docs/images2/admin4.png)
-
-```管理者アカウント```
-メールアドレス:admin@example.com
-パスワード:password
-
-## URL
-https://psychiatric-review-site.fly.dev
 
 ## 使用技術
 
