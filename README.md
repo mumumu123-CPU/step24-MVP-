@@ -12,8 +12,8 @@
 https://psychiatric-review-site.fly.dev
 
 ### 管理者アカウント
-- メールアドレス:admin@example.com
-- パスワード:password
+- メールアドレス : admin@example.com
+- パスワード : password
 
 ## スクリーンショット
 
