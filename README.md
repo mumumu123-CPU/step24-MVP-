@@ -69,6 +69,14 @@ https://psychiatric-review-site.fly.dev
 ### デプロイ
 - Fly.io
 
+### ワイヤーフレーム
+![ワイヤーフレーム](docs/wireframe/1.png)
+![ワイヤーフレーム](docs/wireframe/2.png)
+
+- FigmaへのURL : https://www.figma.com/design/cftgZ2HOcHVs7gqI9kMpA6/精神科評価サイトプロトタイプ?node-id=395-2332&p=f&t=UuQifJOTYiW3Penn-0
+
+
+
 ### その他
 - このアプリは Fly.io の無料プランを利用してデプロイされています。
 そのため、初回アクセス時や一定時間アクセスがない場合は、サーバーがスリープ状態から復帰するため、立ち上がりに数十秒かかることがあります。
