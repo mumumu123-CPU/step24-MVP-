@@ -15,10 +15,10 @@ https://psychiatric-review-site.fly.dev
 - メールアドレス : admin@example.com
 - パスワード : password
 
-## スクリーンショット
 
-### トップページ
-![Image](https://github.com/user-attachments/assets/457dba6d-8483-4003-b5fc-4dfc23688931)
+
+## トップページ
+<img src="https://github.com/user-attachments/assets/457dba6d-8483-4003-b5fc-4dfc23688931" width="600" />
 <!-- ![トップページ](docs/images2/top4.png)
 ![トップページ2](docs/images2/top3.png)
 ![トップページ3](docs/images2/top2.png) -->
