@@ -15,39 +15,34 @@ https://psychiatric-review-site.fly.dev
 - メールアドレス : admin@example.com
 - パスワード : password
 
+## スクリーンショット
 
-
-## トップページ
-<img src="https://github.com/user-attachments/assets/457dba6d-8483-4003-b5fc-4dfc23688931" width="600" />
-<!-- ![トップページ](docs/images2/top4.png)
+### トップページ
+![トップページ](docs/images2/top4.png)
 ![トップページ2](docs/images2/top3.png)
-![トップページ3](docs/images2/top2.png) -->
+![トップページ3](docs/images2/top2.png)
 
 ## 主な機能
 
 ### ① 病院検索機能(ユーザーは専門外来、疾患、都道府県から探せます)
-![Image](https://github.com/user-attachments/assets/28953f1d-1e12-49c9-973b-fea6b660ead1)
-
-<!-- ![検索機能](docs/images2/search1.png)
+![検索機能](docs/images2/search1.png)
 
 ### 検索結果
 ![検索結果](docs/images2/result1.png)
 
 ### 詳細画面
 ![詳細画面](docs/images2/detail1.png)
-![詳細画面2](docs/images2/detail2.png) -->
+![詳細画面2](docs/images2/detail2.png)
 
 ### ② 管理者ログインにて医療機関の登録・編集・削除ができます
 
 ### 管理者ログイン画面
-![Image](https://github.com/user-attachments/assets/ef504f79-c09c-492d-abf6-090b78c1d91d)
-
-<!-- ![ログイン](docs/images2/login2.png)
+![ログイン](docs/images2/login2.png)
 
 ### 管理者画面
 ![管理者画面](docs/images2/admin7.png)
 ![管理者画面(詳細)](docs/images2/admin8.png)
-![管理者画面(新規登録)](docs/images2/admin9.png) -->
+![管理者画面(新規登録)](docs/images2/admin9.png)
 
 
 ## 使用技術
